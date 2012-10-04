@@ -7,6 +7,13 @@
   -ms-transition: @transition1;
   transition: @transition1;
 }
+.transition-delay(@delay) {
+  -webkit-transition-delay: @delay;
+  -moz-transition-delay: @delay;
+  -o-transition-delay: @delay;
+  -ms-transition-delay: @delay;
+  transition-delay: @delay;
+}
 
 .clearfix() {
   *zoom: 1;
@@ -47,7 +54,7 @@
 // Globals
 
 // SPACING
-@primaryheight: 26px;
+@webmakerNavHeight: 26px;
 @padding: 12px;
 @secondaryheight: 50px; // Height of the expanded secondary nav
 @headerheight: 62px; // Main header
@@ -57,6 +64,7 @@
 @lightgrey: #D6D8D7;
 
 //FONTS
+@fontsize: 12px;
 @primaryfontsize: 12px;
 @secondaryfontsize: 14px;
 
@@ -73,6 +81,7 @@ header {
   background: @darkgrey;
   padding: 0;
   margin: 0;
+  font-size: @fontsize;
   list-style: none;
   .clearfix();
 
@@ -89,8 +98,8 @@ header {
     height: 100%;
     background: @darkgrey;
     color: #FFF ;
-    font-size: @primaryfontsize;
-    line-height: @primaryheight;
+    font-size: 1em;
+    line-height: @webmakerNavHeight;
     padding: 0 @padding;
     font-weight: 600;
     opacity: 0.4;
@@ -111,7 +120,7 @@ header {
 
   // This is the menu that always shows up, like "Projects", "Tools", ...
   &.primary {
-    height: @primaryheight;
+    height: @webmakerNavHeight;
     border-bottom: 1px solid lighten( @darkgrey, 15% );
   }
 
@@ -125,7 +134,7 @@ header {
       border-right: none;
     }
     a {
-      font-size: @secondaryfontsize;
+      font-size: 1.25em;
       line-height: @secondaryheight;
     }
     &.open {
