@@ -87,7 +87,7 @@ header {
 .feedback-icon {
   margin-top: 5px;
   float: left;
-  background: url("../img/feedback-icon.png");
+  background: url("img/feedback-icon.png");
   height: 18px;
   width: 20px;
 }
@@ -125,7 +125,7 @@ header {
   height: 60px;
   width: 165px;
   margin: 0 20px;
-  background: url("../img/thimble-logo.png") 0 5px no-repeat;
+  background: url("img/thimble-logo.png") 0 5px no-repeat;
 }
 .project-title {
   font-size: 16px;
