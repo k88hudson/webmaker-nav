@@ -1,0 +1,221 @@
+// LESS Helpers
+
+.transition(@transition1) {
+  -webkit-transition: @transition1;
+  -moz-transition: @transition1;
+  -o-transition: @transition1;
+  -ms-transition: @transition1;
+  transition: @transition1;
+}
+
+.clearfix() {
+  *zoom: 1;
+  &:before, 
+  &:after { 
+    content: "";
+    display: table; 
+  }
+  &:after { clear: both; }
+}
+
+.triangle( "right", @size, @color, @borderSize, @borderColor ) {
+  &:after, &:before {
+    left: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; /* csslint-ignore */
+  }
+  &:after {
+    border-left-color: @color;
+    border-width: @size;
+    top: 50%;
+    margin-top: -@size;
+  }
+  &:before {
+    border-left-color: @borderColor;
+    border-width: @size + @borderSize + 1;
+    top: 50%;
+    margin-top: -( @size + @borderSize + 1 );
+  }
+}
+
+
+// *********************************************************
+// Globals
+
+// SPACING
+@primaryheight: 26px;
+@padding: 12px;
+@secondaryheight: 50px; // Height of the expanded secondary nav
+@headerheight: 62px; // Main header
+
+// COLORS
+@darkgrey: #3A3C3C;
+@lightgrey: #D6D8D7;
+
+//FONTS
+@primaryfontsize: 12px;
+@secondaryfontsize: 14px;
+
+header {
+  position: relative;
+}
+
+/*********************************************************
+* Webmaker nav
+*/
+
+.webmaker-nav {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  background: @darkgrey;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  .clearfix();
+
+  li {
+    float: left;
+    border-right: 1px solid lighten( @darkgrey, 10% );
+    &:last-child {
+      border-right: none;
+    }
+  }
+  a {
+    position: relative;
+    display: block;
+    height: 100%;
+    background: @darkgrey;
+    color: #FFF ;
+    font-size: @primaryfontsize;
+    line-height: @primaryheight;
+    padding: 0 @padding;
+    font-weight: 600;
+    opacity: 0.4;
+    text-decoration: none;
+    border-bottom: 0 solid @darkgrey;
+    cursor: pointer;
+    .transition( border-bottom-width 0 0.2s );
+    &:hover,
+    &.active,
+    &.on {
+      opacity: 1;
+    }
+    &.active {
+      border-bottom-width: 1px;
+      .transition( border-bottom-width 0 0 );
+    }
+  }
+
+  // This is the menu that always shows up, like "Projects", "Tools", ...
+  &.primary {
+    height: @primaryheight;
+    border-bottom: 1px solid lighten( @darkgrey, 15% );
+  }
+
+  // This is the menu with subnavigation
+  &.secondary {
+    height: 0;
+    overflow: hidden;
+    line-height: @secondaryheight;
+    .transition( height 0.1s ease-in-out );
+    li {
+      border-right: none;
+    }
+    a {
+      font-size: @secondaryfontsize;
+      line-height: @secondaryheight;
+    }
+    &.open {
+      height: @secondaryheight;
+    }
+  }
+} //webmaker-nav
+
+.feedback-icon {
+  margin-top: 5px;
+  float: left;
+  background: url( "../img/feedback-icon.png" );
+  height: 18px;
+  width: 20px;
+  &:hover {
+    background-position: -19px 0;
+  }
+}
+
+.webmaker-feedback-btn {
+  .feedback-label {
+    display: none;
+    padding-left: 5px;
+  }
+  &:hover .feedback-label {
+    display: inline;
+  }
+}
+
+#tabzilla {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/*********************************************************
+* Main white header
+*/
+
+.main-header {
+  position: relative;
+  height: @headerheight;
+  line-height: @headerheight;
+  box-shadow: 0 20px 10px -20px rgba( 0, 0, 0, 0.2 ),
+    0 1px 0 0 #CCC;
+  z-index: 100;
+}
+
+/*********************************************************
+* Example content for the main header
+* 
+*/
+
+.logo {
+  float: left;
+  height: 60px;
+  width: 165px;
+  margin: 0 20px;
+  background: url( "../img/thimble-logo.png" ) 0 5px no-repeat;
+}
+.project-title {
+  font-size: 16px;
+  color: #3FB58E;
+  padding-bottom: 5px;
+  margin-right: 20px;
+  &:hover {
+    border-bottom :1px dashed #AAA;
+  }
+}
+// The little side-tick thing
+.breadcrumbs { 
+  position: relative;
+  float: left;
+  width: 1px;
+  height: 100%;
+  margin-right: 30px;
+  border-right: 1px solid @lightgrey;
+  .triangle( "right", 5px, #FFF, 1px, @lightgrey );
+}
+.user {
+  font-size: 14px;
+  position: absolute;
+  right: 30px;
+  img {
+    position: relative;
+    top: 7px;
+    margin-right: 6px;
+  }
+}
+
+.main {
+  padding: 30px;
+}
