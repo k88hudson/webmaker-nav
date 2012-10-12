@@ -4,7 +4,6 @@
 .webmaker-nav-container {
   font-size: 12px;
   border-bottom: 1px solid #2d2f2f;
-  overflow: hidden;
 }
 .webmaker-nav-container a {
   color: #FFF;
@@ -86,6 +85,9 @@
 /*********************************************************
 * User/Login Styles
 */
+.user {
+  min-width: 150px;
+}
 .user-info {
   float: right;
   margin-right: 150px;
