@@ -1,0 +1,72 @@
+header {
+  position: relative;
+}
+
+#tabzilla {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/*********************************************************
+* Main white header
+*/
+.main-header {
+  position: relative;
+  height: 62px;
+  line-height: 62px;
+  box-shadow: 0 20px 10px -20px rgba(0, 0, 0, 0.2), 0 1px 0 0 #cccccc;
+  z-index: 100;
+}
+/*********************************************************
+* Example content for the main header
+* 
+*/
+.logo {
+  float: left;
+  height: 60px;
+  width: 165px;
+  margin: 0 20px;
+  background: url("../img/thimble-logo.png") 0 5px no-repeat;
+}
+.project-title {
+  font-size: 16px;
+  color: #3FB58E;
+  padding-bottom: 5px;
+  margin-right: 20px;
+}
+.project-title:hover {
+  border-bottom: 1px dashed #AAA;
+}
+.breadcrumbs {
+  position: relative;
+  float: left;
+  width: 1px;
+  height: 100%;
+  margin-right: 30px;
+  border-right: 1px solid #d6d8d7;
+}
+.breadcrumbs:after,
+.breadcrumbs:before {
+  left: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.breadcrumbs:after {
+  border-left-color: #ffffff;
+  border-width: 5px;
+  top: 50%;
+  margin-top: -5px;
+}
+.breadcrumbs:before {
+  border-left-color: #d6d8d7;
+  border-width: 7px;
+  top: 50%;
+  margin-top: -7px;
+}
+.main {
+  padding: 30px;
+}
