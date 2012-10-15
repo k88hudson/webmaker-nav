@@ -10,7 +10,7 @@ define( [ "text!./templates/webmaker-nav.html" ],
        // The class prefix for each individual tab
       TAB_PREFIX = "tab-";
 
-  return function( app, options ) {
+  return function( options ) {
     var _this = this,
         root = options.container;
 
@@ -34,11 +34,11 @@ define( [ "text!./templates/webmaker-nav.html" ],
     
 
     this.views = {
-      login: function() {
+      login: function(context) {
         personaBtnGroup.style.display = "none";
         usernameContainer.style.display = "";
         // You'll want to set the username here
-        usernameInner.innerHTML = app.username;
+        usernameInner.innerHTML = context.username;
       },
       logout: function() {
         personaBtnGroup.style.display = "";
@@ -104,13 +104,6 @@ define( [ "text!./templates/webmaker-nav.html" ],
     loginBtn.addEventListener( "click", loginBtnCallback, false );
     logoutBtn.addEventListener( "click", logoutBtnCallback, false );
     primary.addEventListener( "click", webmakerTabSetup, false );
-
-    /*
-    // You can set up login/logout views on different events or handle them some other way
-    // e.g.
-    app.listen( "authenticated", _this.views.login, false );
-    app.listen( "logout", _this.views.logout, false );
-    */
 
     // Default view
     this.views.logout();
