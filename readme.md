@@ -17,7 +17,7 @@ Then, you should be able to use the module like this:
 
 ```javascript
 require(["webmaker-nav"], function(WebmakerNav) {
-  var webmakerNav = new WebmakerNav(testApp, {
+  var webmakerNav = new WebmakerNav({
     container: document.querySelector("#webmakerNavContainer"),
     loginBtnCallback: function myLoginFunction() { /* ... */ },
     logoutBtnCallbak: function myLogoutFunction() { /* ... */ },
@@ -27,6 +27,18 @@ require(["webmaker-nav"], function(WebmakerNav) {
 ```
 
 If `feedbackCallback` is omitted, the feedback button will not be displayed.
+
+Whenever the user logs in, you'll want to call:
+
+```javascript
+webmakerNav.views.login({username: "foo@bar.org"});
+```
+
+When the user logs out, just call:
+
+```javascript
+webmakerNav.views.logout();
+```
 
 For a full example, see `example/index.html`.
 

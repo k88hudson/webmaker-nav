@@ -44,17 +44,10 @@
   });
 
   require([ "webmaker-nav" ], function( Webmaker ) {
-
-    // Normally you would pass your actual app
-    var testApp = {
-      username: "testuser@mozilla.org"
-    };
-
-    // Don't actually call view functions here. Just for demonstration.
-    var webmakerNav = new Webmaker( testApp, {
+    var webmakerNav = new Webmaker({
       container: document.querySelector( "#webmaker" ),
       loginBtnCallback: function() {
-        webmakerNav.views.login();
+        webmakerNav.views.login({username: "testuser@mozilla.org"});
       },
       logoutBtnCallback: function() {
         webmakerNav.views.logout();
