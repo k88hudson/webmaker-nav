@@ -1,5 +1,5 @@
-define( [ "text!./webmaker-nav.html", "text!./webmaker-nav.css" ],
-  function( BASE_LAYOUT, BASE_CSS ) {
+define( [ "text!./templates/webmaker-nav.html" ],
+  function( BASE_LAYOUT ) {
 
       // Added to tab when it's open
   var TAB_ACTIVE_CLASS = "webmaker-tab-active",
@@ -29,7 +29,6 @@ define( [ "text!./webmaker-nav.html", "text!./webmaker-nav.css" ],
         feedbackCallback,
         loginBtnCallback,
         logoutBtnCallback,
-        appendStyles,
         webmakerTabSetup,
         userMenuSetup;
     
@@ -52,13 +51,6 @@ define( [ "text!./webmaker-nav.html", "text!./webmaker-nav.css" ],
     feedbackCallback = options.feedbackCallback;
     loginBtnCallback = options.loginBtnCallback;
     logoutBtnCallback = options.logoutBtnCallback;
-
-    appendStyles = function() {
-      var styleTag = document.createElement( "style" ),
-          styles = document.createTextNode( BASE_CSS );
-      styleTag.appendChild( styles );
-      document.head.appendChild( styleTag );
-    };
 
     webmakerTabSetup = function( e ) {
       var currentActiveBtn = primary.querySelector( "." + BTN_ACTIVE_CLASS ),
@@ -101,10 +93,14 @@ define( [ "text!./webmaker-nav.html", "text!./webmaker-nav.css" ],
       }, false );
     };
 
-    appendStyles();
     userMenuSetup();
 
-    feedbackBtn.addEventListener( "click", feedbackCallback, false );
+    if (feedbackCallback) {
+      feedbackBtn.addEventListener( "click", feedbackCallback, false );
+    } else {
+      feedbackBtn.parentNode.removeChild(feedbackBtn);
+    }
+    
     loginBtn.addEventListener( "click", loginBtnCallback, false );
     logoutBtn.addEventListener( "click", logoutBtnCallback, false );
     primary.addEventListener( "click", webmakerTabSetup, false );
