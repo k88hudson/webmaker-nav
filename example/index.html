@@ -33,19 +33,19 @@
     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div>
-  
+
   <script src="require.js"></script>
   <script>
   require.config({
     packages: [{
-      name: 'webmaker-nav',
-      location: '../webmaker-nav'
+      name: "webmaker-nav",
+      location: "../webmaker-nav"
     }]
   });
-  
-  require(["webmaker-nav"], function(Webmaker) {
 
-    // Normally you would pass your actual app 
+  require([ "webmaker-nav" ], function( Webmaker ) {
+
+    // Normally you would pass your actual app
     var testApp = {
       username: "testuser@mozilla.org"
     };
