@@ -95,7 +95,12 @@ define( [ "text!./templates/webmaker-nav.html" ],
 
     userMenuSetup();
 
-    feedbackBtn.addEventListener( "click", feedbackCallback, false );
+    if (feedbackCallback) {
+      feedbackBtn.addEventListener( "click", feedbackCallback, false );
+    } else {
+      feedbackBtn.parentNode.removeChild(feedbackBtn);
+    }
+    
     loginBtn.addEventListener( "click", loginBtnCallback, false );
     logoutBtn.addEventListener( "click", logoutBtnCallback, false );
     primary.addEventListener( "click", webmakerTabSetup, false );

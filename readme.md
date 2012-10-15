@@ -26,6 +26,8 @@ require(["webmaker-nav"], function(WebmakerNav) {
 });
 ```
 
+If `feedbackCallback` is omitted, the feedback button will not be displayed.
+
 For a full example, see `example/index.html`.
 
   [requirejs]: http://requirejs.org/
