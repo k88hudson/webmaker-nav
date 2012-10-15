@@ -27,6 +27,7 @@ require(["webmaker-nav"], function(WebmakerNav) {
 ```
 
 If `feedbackCallback` is omitted, the feedback button will not be displayed.
+Both `loginBtnCallback` and `logoutBtnCallback` must be defined in order for the logout/login buttons to appear.
 
 Whenever the user logs in, you'll want to call:
 

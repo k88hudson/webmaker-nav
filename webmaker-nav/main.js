@@ -33,7 +33,7 @@ define( [ "text!./templates/webmaker-nav.html" ],
         userMenuSetup;
 
     this.views = {
-      login: function(context) {
+      login: function( context ) {
         personaBtnGroup.style.display = "none";
         usernameContainer.style.display = "";
         // You'll want to set the username here
@@ -100,12 +100,17 @@ define( [ "text!./templates/webmaker-nav.html" ],
       feedbackBtn.parentNode.removeChild( feedbackBtn );
     }
 
-    loginBtn.addEventListener( "click", loginBtnCallback, false );
-    logoutBtn.addEventListener( "click", logoutBtnCallback, false );
-    primary.addEventListener( "click", webmakerTabSetup, false );
+    if ( loginBtnCallback && logoutBtnCallback ) {
+      loginBtn.addEventListener( "click", loginBtnCallback, false );
+      logoutBtn.addEventListener( "click", logoutBtnCallback, false );
+      // Default view
+      this.views.logout();
+    } else {
+      loginBtn.parentNode.removeChild( loginBtn );
+      logoutBtn.parentNode.removeChild( logoutBtn );
+    }
 
-    // Default view
-    this.views.logout();
+    primary.addEventListener( "click", webmakerTabSetup, false );
 
   };
 });
