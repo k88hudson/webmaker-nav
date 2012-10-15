@@ -1,4 +1,4 @@
-define( [ "webmaker-nav/webmaker-nav"], function( Webmaker ) {
+define( [ "../webmaker-nav/js/webmaker-nav"], function( Webmaker ) {
 
   // Normally you would pass your actual app 
   var testApp = {
