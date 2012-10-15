@@ -35,9 +35,10 @@
   </div>
   <script>
   var require = {
-    paths: {
-      'templates': '../webmaker-nav/templates'
-    }
+    packages: [{
+      name: 'webmaker-nav',
+      location: '../webmaker-nav'
+    }]
   };
   </script>
   <script data-main="main" src="require.js"></script>

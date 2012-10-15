@@ -1,4 +1,4 @@
-define( [ "text!templates/webmaker-nav.html" ],
+define( [ "text!./templates/webmaker-nav.html" ],
   function( BASE_LAYOUT ) {
 
       // Added to tab when it's open
