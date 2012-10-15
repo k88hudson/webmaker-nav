@@ -33,15 +33,38 @@
     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div>
+  
+  <script src="require.js"></script>
   <script>
-  var require = {
+  require.config({
     packages: [{
       name: 'webmaker-nav',
       location: '../webmaker-nav'
     }]
-  };
+  });
+  
+  require(["webmaker-nav"], function(Webmaker) {
+
+    // Normally you would pass your actual app 
+    var testApp = {
+      username: "testuser@mozilla.org"
+    };
+
+    // Don't actually call view functions here. Just for demonstration.
+    var webmakerNav = new Webmaker( testApp, {
+      container: document.querySelector( "#webmaker" ),
+      loginBtnCallback: function() {
+        webmakerNav.views.login();
+      },
+      logoutBtnCallback: function() {
+        webmakerNav.views.logout();
+      },
+      feedbackCallback: function() {
+        console.log( "do feedback stuff" );
+      }
+    });
+  });
   </script>
-  <script data-main="main" src="require.js"></script>
   <script src="//www.mozilla.org/tabzilla/media/js/tabzilla.js"></script>
 </body>
 </html>
