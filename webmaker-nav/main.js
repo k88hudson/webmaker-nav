@@ -31,7 +31,6 @@ define( [ "text!./templates/webmaker-nav.html" ],
         logoutBtnCallback,
         webmakerTabSetup,
         userMenuSetup;
-    
 
     this.views = {
       login: function(context) {
@@ -86,7 +85,7 @@ define( [ "text!./templates/webmaker-nav.html" ],
       userMenu.addEventListener( "click", function( e ) {
         e.stopPropagation();
       }, false );
-      
+
       username.addEventListener( "click", function() {
         userMenu.classList.toggle( "tooltip-no-transition-on" );
         username.classList.toggle( BTN_ACTIVE_CLASS );
@@ -95,12 +94,12 @@ define( [ "text!./templates/webmaker-nav.html" ],
 
     userMenuSetup();
 
-    if (feedbackCallback) {
+    if ( feedbackCallback ) {
       feedbackBtn.addEventListener( "click", feedbackCallback, false );
     } else {
-      feedbackBtn.parentNode.removeChild(feedbackBtn);
+      feedbackBtn.parentNode.removeChild( feedbackBtn );
     }
-    
+
     loginBtn.addEventListener( "click", loginBtnCallback, false );
     logoutBtn.addEventListener( "click", logoutBtnCallback, false );
     primary.addEventListener( "click", webmakerTabSetup, false );
