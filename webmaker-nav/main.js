@@ -32,6 +32,7 @@ define( [ "text!./templates/webmaker-nav.html" ],
         webmakerTabSetup,
         userMenuSetup;
 
+    this.container = root;
     this.views = {
       login: function( context ) {
         personaBtnGroup.style.display = "none";

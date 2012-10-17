@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Webmaker Nav</title>
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="//www.mozilla.org/tabzilla/media/css/tabzilla.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../webmaker-nav/css/webmaker-nav.css">
+  <link rel="stylesheet" href="../webmaker-nav/css/badge-ui.css">
+</head>
+<body>
+  <header>
+    <a href="http://www.mozilla.org/" id="tabzilla">mozilla</a>
+    <!-- Begin webmaker nav -->
+    <div id="webmaker">
+    </div>
+    <!-- / webmaker nav -->
+    <div class="main-header">
+      <span class="logo"></span>
+      <span class="breadcrumbs"></span>
+      <span class="project-title">My Project</span>
+    </div>
+  </header>
+  <div class="main">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+  <script src="require.js"></script>
+  <script>
+  require.config({
+    paths: {
+      "jquery": "clopenbadger/vendor/jquery.min",
+      "backbone-events": "clopenbadger/vendor/backbone-events"
+    },
+    packages: [{
+      name: "webmaker-nav",
+      location: "../webmaker-nav"
+    }]
+  });
+
+  require([
+    "webmaker-nav",
+    "webmaker-nav/badge-ui",
+    "clopenbadger/clopenbadger",
+    "clopenbadger/test/fake-clopenbadger-server"
+  ], function( Webmaker, BadgeUI, Clopenbadger, FakeServer ) {
+    var fakeServerURL = "http://fake-clopenbadger";
+    
+    FakeServer.setup({
+      urlPrefix: fakeServerURL,
+      availableBadges: {
+        "FIRST_LOGIN": {
+          "name": "First Login",
+          "description": "Like a champion, you logged in...",
+          "criteria": "Can log into a site that uses Persona for auth.",
+          "image": "https://wiki.mozilla.org/images/b/bb/Merit-badge.png",
+          "behavior": "LOGGED_IN",
+          "score": 1,
+          "prerequisites": []
+        },
+        "FEEDBACK_MANIAC": {
+          "name": "Feedback Maniac",
+          "description": "You busted feedback.",
+          "criteria": "Can submit feedback.",
+          "image": "https://wiki.mozilla.org/images/b/bb/Merit-badge.png",
+          "behavior": "GAVE_FEEDBACK",
+          "score": 1,
+          "prerequisites": []
+        }
+      }
+    });
+
+    var badger;
+    var webmakerNav = new Webmaker({
+      container: document.querySelector( "#webmaker" ),
+      loginBtnCallback: function() {
+        badger = Clopenbadger({
+          server: fakeServerURL,
+          token: "fake token",
+          email: "testuser@mozilla.org"
+        });
+        webmakerNav.views.login({username: "testuser@mozilla.org"});
+        badgeUI.setBadger(badger);
+        badger.credit("LOGGED_IN");
+      },
+      logoutBtnCallback: function() {
+        badger = null;
+        webmakerNav.views.logout();
+        badgeUI.setBadger(badger);
+      },
+      feedbackCallback: function() {
+        if (badger) badger.credit("GAVE_FEEDBACK");
+        console.log( "do feedback stuff" );
+      }
+    });
+    var badgeUI = new BadgeUI(webmakerNav);
+  });
+  </script>
+  <script src="//www.mozilla.org/tabzilla/media/js/tabzilla.js"></script>
+</body>
+</html>
