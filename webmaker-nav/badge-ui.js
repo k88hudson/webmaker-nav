@@ -1,10 +1,15 @@
 "use strict";
 
-define(["jquery"], function($) {
+define([
+  "jquery",
+  "text!./templates/badge-ui-widget.html",
+  "text!./templates/badge-ui-list-item.html",
+  "text!./templates/badge-ui-alert.html"
+], function($, WIDGET_HTML, LI_HTML, ALERT_HTML) {
   return function BadgeUI(webmakerNav, options) {
     options = options || {};
     
-    var container = $('<li class="user-badges"></li>')
+    var widget = $(WIDGET_HTML)
       .prependTo($(webmakerNav.container).find("ul.user-info"));
     var alertContainer = $(options.alertContainer || document.body);
     var alertDisplayTime = options.alertDisplayTime || 2000;
@@ -12,60 +17,50 @@ define(["jquery"], function($) {
     var self = {
       badger: null,
       setBadger: function(badger) {
-        this.badger = badger;
-        if (badger)
-          onLogin();
-        else
-          onLogout();
+        function refreshBadgeList() {
+          var badgeList = $('.badge-ui-badges', widget).empty();
+          var available = badger.availableBadges;
+          var earned = badger.earnedBadges;
+
+          Object.keys(available).forEach(function(shortname) {
+            var badge = available[shortname];
+            var item = $(LI_HTML);
+            $('.badge-ui-name', item).text(badge.name);
+            $('img', item).attr("src", badge.image);
+            item.toggleClass("badge-ui-earned", shortname in earned)
+              .appendTo(badgeList);
+          });
+        }
+        
+        self.badger = badger;
+        if (!badger)
+          return;
+        
+        badger.on("change:unreadBadgeCount", function() {
+          var unread = badger.unreadBadgeCount;
+          $('.badge-ui-unread', widget).toggle(unread > 0)
+            .text(unread.toString());
+        });
+        badger.on("change:availableBadges", refreshBadgeList);
+        badger.on("change:earnedBadges", refreshBadgeList);
+        badger.on("award", function(awards) {
+          awards.forEach(function(shortname) {
+            var badge = badger.availableBadges[shortname];
+            var alert = $(ALERT_HTML);
+            $(".badge-ui-name", alert).text(badge.name)
+            alert.appendTo(alertContainer);
+            setTimeout(function() { alert.remove(); }, alertDisplayTime);
+          });
+        });
       }
     };
 
-    function onLogin() {
-      var widget = $('<div class="badge-ui-widget"></div>');
-      var unreadCount = $('<div class="badge-ui-unread"></div>')
-        .appendTo(widget);
-      var badgeList = $('<ul class="badge-ui-badges"></ul>')
-        .appendTo(widget);
-        
-      function refreshBadgeList() {
-        var available = self.badger.availableBadges;
-        var earned = self.badger.earnedBadges;
-        badgeList.empty();
-        Object.keys(available).forEach(function(shortname) {
-          var badge = available[shortname];
-          var item = $('<li></li>').text(badge.name);
-          if (shortname in earned)
-            item.addClass("badge-ui-earned");
-          badgeList.append(item);
-        });
-      }
-
-      container.empty().append(widget);
-      widget.click(function() {
-        $(this).toggleClass("badge-ui-on");
+    widget.click(function() {
+      $(this).toggleClass("badge-ui-on");
+      if (self.badger)
         self.badger.markAllBadgesAsRead();
-      });
-      self.badger.on("change:unreadBadgeCount", function() {
-        var unread = self.badger.unreadBadgeCount;
-        unreadCount.toggle(unread > 0);
-        unreadCount.text(unread.toString());
-      });
-      self.badger.on("change:availableBadges", refreshBadgeList);
-      self.badger.on("change:earnedBadges", refreshBadgeList);
-      self.badger.on("award", function(awards) {
-        awards.forEach(function(shortname) {
-          var badge = self.badger.availableBadges[shortname];
-          var alert = $('<div class="ui-badge-alert"></div>');
-          alert.text(badge.name).appendTo(alertContainer);
-          setTimeout(function() { alert.remove(); }, alertDisplayTime);
-        });
-      });
-    }
+    });
 
-    function onLogout() {
-      container.empty();
-    }
-    
     return self;
   };
 });

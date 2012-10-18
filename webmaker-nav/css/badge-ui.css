@@ -22,7 +22,7 @@
   list-style-type: none;
 }
 
-.webmaker-nav-container li.user-badges div.badge-ui-widget:not(.badge-ui-on) ul {
+.webmaker-nav-container li.user-badges:not(.badge-ui-on) ul {
   display: none;
 }
 
@@ -48,12 +48,12 @@
   color: white;
 }
 
-.ui-badge-alert:before {
+.badge-ui-alert:before {
   color: black;
   content: 'U Earned ';
 }
 
-.ui-badge-alert {
+.badge-ui-alert {
   text-transform: uppercase;
   position: absolute;
   bottom: 0;
@@ -62,6 +62,10 @@
   color: lightgray;
   font-size: 18px;
   padding: 40px;
+}
+
+.webmaker-nav-container:not(.logged-in) li.user-badges {
+  display: none;
 }
 
 /* END EXTREMELY TEMPORARY STYLES */
