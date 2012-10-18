@@ -18,7 +18,7 @@ div.badge-ui-widget .badge-ui-menu {
   padding: 8px;
   background: white;
   border: 1px solid lightgray;
-  color: lightgray;
+  color: gray;
   z-index: 9001;
   width: 250px;
 }
@@ -36,7 +36,16 @@ div.badge-ui-widget .badge-ui-menu {
   cursor: auto;
 }
 
-div.badge-ui-widget:not(.badge-ui-on) .badge-ui-menu {
+div.badge-ui-widget.badge-ui-on .badge-ui-alert {
+  display: none;
+}
+
+div.badge-ui-widget .badge-ui-alert {
+  box-shadow: 0 0 5px gold;
+  margin-left: -1px;
+}
+
+div.badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
   display: none;
 }
 
@@ -61,24 +70,12 @@ div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
   line-height: 12px;
 }
 
-.badge-ui-alert:before {
-  color: black;
-  content: 'U Earned ';
-}
-
-.badge-ui-alert {
-  text-transform: uppercase;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: darkgray;
-  color: lightgray;
-  font-size: 18px;
-  padding: 40px;
-}
-
 .webmaker-nav-container:not(.logged-in) li.user-badges {
   display: none;
+}
+
+.badge-ui-name {
+  font-size: 18px;
 }
 
 /* ====== media ====== 

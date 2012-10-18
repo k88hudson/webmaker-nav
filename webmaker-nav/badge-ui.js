@@ -44,7 +44,7 @@ define([
     var widget = $(WIDGET_HTML)
       .prependTo($(webmakerNav.container).find("ul.user-info"))
       .find(".badge-ui-widget");
-    var alertContainer = $(options.alertContainer || document.body);
+    var alertContainer = $(options.alertContainer || widget);
     var alertDisplayTime = options.alertDisplayTime || 2000;
 
     var self = {
@@ -85,9 +85,12 @@ define([
           awards.forEach(function(shortname) {
             var badge = badger.availableBadges[shortname];
             var alert = $(ALERT_HTML);
-            $(".badge-ui-name", alert).text(badge.name)
+            $(".badge-ui-name", alert).text(badge.name);
+            $("img", alert).attr("src", badge.image);
             alert.appendTo(alertContainer);
-            setTimeout(function() { alert.remove(); }, alertDisplayTime);
+            alert.hide().slideDown().delay(alertDisplayTime).slideUp(function() {
+              alert.remove();
+            });
           });
         });
       }
@@ -97,6 +100,10 @@ define([
       $(this).toggleClass("badge-ui-on");
       if (self.badger)
         self.badger.markAllBadgesAsRead();
+    });
+
+    $(".badge-ui-backpack button", widget).click(function() {
+      alert("TODO: Implement this!");
     });
 
     return self;
