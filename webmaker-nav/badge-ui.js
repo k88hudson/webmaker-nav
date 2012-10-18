@@ -73,10 +73,11 @@ define([
             var alert = $(ALERT_HTML);
             $(".badge-ui-name", alert).text(badge.name);
             $("img", alert).attr("src", badge.image);
-            alert.appendTo(alertContainer);
-            alert.hide().slideDown().delay(alertDisplayTime).slideUp(function() {
-              alert.remove();
-            });
+            alert.appendTo(alertContainer)
+              .hide()
+              .slideDown()
+              .delay(alertDisplayTime)
+              .slideUp(function() { alert.remove(); });
           });
         });
       }
