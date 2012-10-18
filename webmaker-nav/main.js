@@ -11,19 +11,14 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       TAB_PREFIX = "tab-";
 
   return function( options ) {
-    var _this = this,
-        root = $( options.container );
-
-    $( root ).html( BASE_LAYOUT );
-
-    var feedbackBtn = $( ".webmaker-feedback-btn", root ),
-        personaBtnGroup = $( ".login-join", root ),
+    var root = $( options.container ).html( BASE_LAYOUT )
+          .find( ".webmaker-nav-container" ),
+        feedbackBtn = $( ".webmaker-feedback-btn", root ),
         loginBtn = $( ".login", root ),
         logoutBtn = $( ".logout-btn", root ),
         userMenu = $( ".tooltip-user", root ),
         username = $( ".user-name", root ),
         usernameInner = $( ".user-name-container", root ),
-        usernameContainer= $( ".user", root ),
         primary = $( ".primary", root ),
         tabContainer = $( ".webmaker-tabs", root ),
         feedbackCallback,
@@ -33,13 +28,11 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
 
     this.views = {
       login: function( context ) {
-        personaBtnGroup.hide();
-        usernameContainer.show();
+        root.addClass( "logged-in" );
         usernameInner.html( context.username );
       },
       logout: function() {
-        personaBtnGroup.show();
-        usernameContainer.hide();
+        root.removeClass( "logged-in" );
         userMenu.removeClass( "tooltip-no-transition-on" );
         username.removeClass( BTN_ACTIVE_CLASS );
       }
