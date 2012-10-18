@@ -48,11 +48,12 @@
   });
 
   require([
+    "jquery",
     "webmaker-nav",
     "webmaker-nav/badge-ui",
     "clopenbadger/clopenbadger",
     "clopenbadger/test/fake-clopenbadger-server"
-  ], function( Webmaker, BadgeUI, Clopenbadger, FakeServer ) {
+  ], function( $, Webmaker, BadgeUI, Clopenbadger, FakeServer ) {
     var fakeServerURL = "http://fake-clopenbadger";
     
     FakeServer.setup({
@@ -63,8 +64,7 @@
           "description": "Like a champion, you logged in...",
           "criteria": "Can log into a site that uses Persona for auth.",
           "image": "https://wiki.mozilla.org/images/b/bb/Merit-badge.png",
-          "behavior": "LOGGED_IN",
-          "score": 1,
+          "behaviors": [{"name": "LOGGED_IN", "score": 1}],
           "prerequisites": []
         },
         "FEEDBACK_MANIAC": {
@@ -72,8 +72,7 @@
           "description": "You busted feedback.",
           "criteria": "Can submit feedback.",
           "image": "https://wiki.mozilla.org/images/b/bb/Merit-badge.png",
-          "behavior": "GAVE_FEEDBACK",
-          "score": 1,
+          "behaviors": [{"name": "GAVE_FEEDBACK", "score": 1}],
           "prerequisites": []
         }
       }
@@ -103,6 +102,11 @@
       }
     });
     var badgeUI = new BadgeUI(webmakerNav);
+
+    // Uncomment these to automatically show parts of the UI, which is
+    // useful for tweaking CSS on dialogs, etc.
+    //$(".login").click();
+    //$(".badge-ui-widget").click();
   });
   </script>
   <script src="//www.mozilla.org/tabzilla/media/js/tabzilla.js"></script>
