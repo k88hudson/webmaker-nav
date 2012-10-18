@@ -1,6 +1,6 @@
 /* BEGIN EXTREMELY TEMPORARY STYLES */
 
-.webmaker-nav-container li.user-badges div.badge-ui-widget {
+div.badge-ui-widget {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -11,22 +11,36 @@
   cursor: pointer;
 }
 
-.webmaker-nav-container li.user-badges div.badge-ui-widget ul {
+div.badge-ui-widget .badge-ui-menu {
   position: absolute;
   top: 16px;
   left: 0;
-  padding: 0;
-  background: darkgray;
+  padding: 8px;
+  background: white;
+  border: 1px solid lightgray;
   color: lightgray;
   z-index: 9001;
-  list-style-type: none;
+  width: 250px;
 }
 
-.webmaker-nav-container li.user-badges:not(.badge-ui-on) ul {
+div.badge-ui-widget ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+div.badge-ui-widget ul li .badge-ui-img {
+  width: 64px;
+}
+
+div.badge-ui-widget .badge-ui-menu {
+  cursor: auto;
+}
+
+div.badge-ui-widget:not(.badge-ui-on) .badge-ui-menu {
   display: none;
 }
 
-.webmaker-nav-container li.user-badges div.badge-ui-unread {
+div.badge-ui-unread {
   font-size: 9px;
   line-height: 9px;
   background: green;
@@ -38,14 +52,13 @@
   display: inline-block;
 }
 
-.webmaker-nav-container li.user-badges div.badge-ui-widget ul li {
+div.badge-ui-widget ul li {
   padding: 4px;
-  white-space: pre;
 }
 
-.webmaker-nav-container li.user-badges .badge-ui-earned {
-  background: green;
-  color: white;
+div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
+  font-size: 10px;
+  line-height: 12px;
 }
 
 .badge-ui-alert:before {
@@ -67,5 +80,14 @@
 .webmaker-nav-container:not(.logged-in) li.user-badges {
   display: none;
 }
+
+/* ====== media ====== 
+ * From http://www.stubbornella.org/?p=497 */
+
+.badge-ui-media {margin:10px;}
+.badge-ui-media, .badge-ui-bd {overflow:hidden; _overflow:visible; zoom:1;}
+.badge-ui-media .badge-ui-img {float:left; margin-right: 10px;}
+.badge-ui-media .badge-ui-img img{display:block;}
+.badge-ui-media .badge-ui-imgExt {float:right; margin-left: 10px;}
 
 /* END EXTREMELY TEMPORARY STYLES */

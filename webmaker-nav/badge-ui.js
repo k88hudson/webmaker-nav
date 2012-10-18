@@ -6,11 +6,44 @@ define([
   "text!./templates/badge-ui-list-item.html",
   "text!./templates/badge-ui-alert.html"
 ], function($, WIDGET_HTML, LI_HTML, ALERT_HTML) {
+  function filterBadges(badger, fn) {
+    var badges = [];
+    
+    Object.keys(badger.availableBadges).forEach(function(shortname) {
+      if (fn(shortname)) {
+        var badge = badger.availableBadges[shortname];
+        badges.push($.extend(badge, badger.availableBadges[shortname],
+                    badger.earnedBadges[shortname] || {}));
+      }
+    });
+    
+    return badges;
+  }
+  
+  function getEarnedBadges(badger) {
+    return filterBadges(badger, function(shortname) {
+      return (shortname in badger.earnedBadges);
+    }).sort(function(a, b) { return b.issuedOn - a.issuedOn; });
+  }
+  
+  function getUnearnedBadges(badger) {
+    return filterBadges(badger, function(shortname) {
+      return (!(shortname in badger.earnedBadges));
+    }).sort(function(a, b) {
+      if (a.name > b.name)
+        return 1;
+      else if (a.name < b.name)
+        return -1;
+      return 0;
+    });
+  }
+  
   return function BadgeUI(webmakerNav, options) {
     options = options || {};
     
     var widget = $(WIDGET_HTML)
-      .prependTo($(webmakerNav.container).find("ul.user-info"));
+      .prependTo($(webmakerNav.container).find("ul.user-info"))
+      .find(".badge-ui-widget");
     var alertContainer = $(options.alertContainer || document.body);
     var alertDisplayTime = options.alertDisplayTime || 2000;
 
@@ -18,18 +51,23 @@ define([
       badger: null,
       setBadger: function(badger) {
         function refreshBadgeList() {
-          var badgeList = $('.badge-ui-badges', widget).empty();
-          var available = badger.availableBadges;
-          var earned = badger.earnedBadges;
+          var unearnedBadgeList = $('.badge-ui-unearned-badges ul', widget)
+            .empty();
+          var earnedBadgeList = $('.badge-ui-earned-badges ul', widget)
+            .empty();
 
-          Object.keys(available).forEach(function(shortname) {
-            var badge = available[shortname];
-            var item = $(LI_HTML);
-            $('.badge-ui-name', item).text(badge.name);
-            $('img', item).attr("src", badge.image);
-            item.toggleClass("badge-ui-earned", shortname in earned)
-              .appendTo(badgeList);
-          });
+          function makeBadgeList(badges, list) {
+            list.parent().toggle(!!badges.length);
+            badges.forEach(function(badge) {
+              var item = $(LI_HTML);
+              $('.badge-ui-name', item).text(badge.name);
+              $('img', item).attr("src", badge.image);
+              item.appendTo(list);
+            });
+          }
+          
+          makeBadgeList(getUnearnedBadges(badger), unearnedBadgeList);
+          makeBadgeList(getEarnedBadges(badger), earnedBadgeList);
         }
         
         self.badger = badger;
