@@ -14,7 +14,7 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
     var _this = this,
         root = $( options.container );
 
-    $( root ).html(BASE_LAYOUT);
+    $( root ).html( BASE_LAYOUT );
 
     var feedbackBtn = $( ".webmaker-feedback-btn", root ),
         personaBtnGroup = $( ".login-join", root ),
