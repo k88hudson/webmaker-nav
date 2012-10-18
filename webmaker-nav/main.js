@@ -94,8 +94,8 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
     }
 
     if ( loginBtnCallback && logoutBtnCallback ) {
-      loginBtn.click(loginBtnCallback);
-      logoutBtn.click(logoutBtnCallback);
+      loginBtn.click( loginBtnCallback );
+      logoutBtn.click( logoutBtnCallback );
       // Default view
       this.views.logout();
     } else {
