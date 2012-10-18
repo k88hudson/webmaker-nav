@@ -4,7 +4,7 @@ This is a first iteration of the universal nav for Popcorn/Thimble. It includes 
 
 ## Usage
 
-You will need [requirejs][].
+You will need [requirejs][] and [jquery][].
 
 First, copy the `webmaker-nav` subdirectory of this repository into your project.
 
@@ -43,5 +43,6 @@ webmakerNav.views.logout();
 
 For a full example, see `example/index.html`.
 
+  [jquery]: http://jquery.com/
   [requirejs]: http://requirejs.org/
   [packages]: http://requirejs.org/docs/api.html#packages
