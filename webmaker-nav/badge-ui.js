@@ -46,7 +46,9 @@ define(["jquery"], function($) {
         self.badger.markAllBadgesAsRead();
       });
       self.badger.on("change:unreadBadgeCount", function() {
-        unreadCount.text(self.badger.unreadBadgeCount.toString());
+        var unread = self.badger.unreadBadgeCount;
+        unreadCount.toggle(unread > 0);
+        unreadCount.text(unread.toString());
       });
       self.badger.on("change:availableBadges", refreshBadgeList);
       self.badger.on("change:earnedBadges", refreshBadgeList);
