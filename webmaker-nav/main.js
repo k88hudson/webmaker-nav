@@ -58,14 +58,14 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       currentActiveBtn.removeClass( BTN_ACTIVE_CLASS );
       if ( currentActiveTab.is( tab ) ) {
         currentActiveTab.removeClass( TAB_ACTIVE_CLASS );
-        $( document.body ).removeClass( EXPANDED_CLASS );
+        root.removeClass( EXPANDED_CLASS );
         return;
       }
       else {
         currentActiveTab.removeClass( TAB_ACTIVE_CLASS );
       }
 
-      $( document.body ).addClass( EXPANDED_CLASS );
+      root.addClass( EXPANDED_CLASS );
       tab.addClass( TAB_ACTIVE_CLASS );
       el.addClass( BTN_ACTIVE_CLASS );
     });
