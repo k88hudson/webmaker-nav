@@ -6,29 +6,15 @@ define([
   "text!./templates/badge-ui-list-item.html",
   "text!./templates/badge-ui-alert.html"
 ], function($, WIDGET_HTML, LI_HTML, ALERT_HTML) {
-  function filterBadges(badger, fn) {
-    var badges = [];
-    
-    Object.keys(badger.availableBadges).forEach(function(shortname) {
-      if (fn(shortname)) {
-        var badge = badger.availableBadges[shortname];
-        badges.push($.extend(badge, badger.availableBadges[shortname],
-                    badger.earnedBadges[shortname] || {}));
-      }
-    });
-    
-    return badges;
-  }
-  
   function getEarnedBadges(badger) {
-    return filterBadges(badger, function(shortname) {
-      return (shortname in badger.earnedBadges);
+    return badger.getBadges().filter(function(badge) {
+      return badge.isEarned;
     }).sort(function(a, b) { return b.issuedOn - a.issuedOn; });
   }
   
   function getUnearnedBadges(badger) {
-    return filterBadges(badger, function(shortname) {
-      return (!(shortname in badger.earnedBadges));
+    return badger.getBadges().filter(function(badge) {
+      return !badge.isEarned;
     }).sort(function(a, b) {
       if (a.name > b.name)
         return 1;
