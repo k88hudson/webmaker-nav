@@ -463,3 +463,13 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+/* Login states */
+
+.webmaker-nav-container:not(.logged-in) .user {
+  display: none;
+}
+
+.webmaker-nav-container.logged-in .login-join {
+  display: none;
+}

@@ -1,5 +1,5 @@
-define( [ "text!./templates/webmaker-nav.html" ],
-  function( BASE_LAYOUT ) {
+define( [ "jquery", "text!./templates/webmaker-nav.html" ],
+  function( $, BASE_LAYOUT ) {
 
       // Added to tab when it's open
   var TAB_ACTIVE_CLASS = "webmaker-tab-active",
@@ -11,40 +11,31 @@ define( [ "text!./templates/webmaker-nav.html" ],
       TAB_PREFIX = "tab-";
 
   return function( options ) {
-    var _this = this,
-        root = options.container;
-
-    root.innerHTML = BASE_LAYOUT;
-
-    var feedbackBtn = root.querySelector( ".webmaker-feedback-btn" ),
-        personaBtnGroup = root.querySelector( ".login-join" ),
-        loginBtn = root.querySelector( ".login" ),
-        logoutBtn = root.querySelector( ".logout-btn" ),
-        userMenu = root.querySelector( ".tooltip-user" ),
-        username = root.querySelector( ".user-name" ),
-        usernameInner = root.querySelector( ".user-name-container" ),
-        usernameContainer= root.querySelector( ".user" ),
-        primary = root.querySelector( ".primary" ),
-        tabContainer = root.querySelector( ".webmaker-tabs" ),
+    var root = $( options.container ).html( BASE_LAYOUT )
+          .find( ".webmaker-nav-container" ),
+        feedbackBtn = $( ".webmaker-feedback-btn", root ),
+        loginBtn = $( ".login", root ),
+        logoutBtn = $( ".logout-btn", root ),
+        userMenu = $( ".tooltip-user", root ),
+        username = $( ".user-name", root ),
+        usernameInner = $( ".user-name-container", root ),
+        primary = $( ".primary", root ),
+        tabContainer = $( ".webmaker-tabs", root ),
         feedbackCallback,
         loginBtnCallback,
         logoutBtnCallback,
-        webmakerTabSetup,
         userMenuSetup;
 
     this.container = root;
     this.views = {
       login: function( context ) {
-        personaBtnGroup.style.display = "none";
-        usernameContainer.style.display = "";
-        // You'll want to set the username here
-        usernameInner.innerHTML = context.username;
+        root.addClass( "logged-in" );
+        usernameInner.html( context.username );
       },
       logout: function() {
-        personaBtnGroup.style.display = "";
-        usernameContainer.style.display = "none";
-        userMenu.classList.remove( "tooltip-no-transition-on" );
-        username.classList.remove( BTN_ACTIVE_CLASS );
+        root.removeClass( "logged-in" );
+        userMenu.removeClass( "tooltip-no-transition-on" );
+        username.removeClass( BTN_ACTIVE_CLASS );
       }
     };
 
@@ -52,66 +43,58 @@ define( [ "text!./templates/webmaker-nav.html" ],
     loginBtnCallback = options.loginBtnCallback;
     logoutBtnCallback = options.logoutBtnCallback;
 
-    webmakerTabSetup = function( e ) {
-      var currentActiveBtn = primary.querySelector( "." + BTN_ACTIVE_CLASS ),
-          currentActiveTab = tabContainer.querySelector( "." + TAB_ACTIVE_CLASS ),
-          el = e.target,
+    primary.click(function webmakerTabSetup( e ) {
+      var currentActiveBtn = $( "." + BTN_ACTIVE_CLASS, primary ),
+          currentActiveTab = $( "." + TAB_ACTIVE_CLASS ),
+          el = $( e.target ),
           tabName,
           tab;
 
-      tabName = el.getAttribute( "data-tab" );
-      tab = tabContainer.querySelector( "." + TAB_PREFIX + tabName );
+      tabName = el.attr( "data-tab" );
+      tab = $( "." + TAB_PREFIX + tabName, tabContainer );
 
-      if ( !tab ) {
+      if ( !tab.length ) {
         return;
       }
-      if ( currentActiveBtn ) {
-        currentActiveBtn.classList.remove( BTN_ACTIVE_CLASS );
-      }
-      if ( currentActiveTab === tab ) {
-        currentActiveTab.classList.remove( TAB_ACTIVE_CLASS );
-        document.body.classList.remove( EXPANDED_CLASS );
+      currentActiveBtn.removeClass( BTN_ACTIVE_CLASS );
+      if ( currentActiveTab.is( tab ) ) {
+        currentActiveTab.removeClass( TAB_ACTIVE_CLASS );
+        root.removeClass( EXPANDED_CLASS );
         return;
       }
-      else if ( currentActiveTab ) {
-        currentActiveTab.classList.remove( TAB_ACTIVE_CLASS );
+      else {
+        currentActiveTab.removeClass( TAB_ACTIVE_CLASS );
       }
 
-      document.body.classList.add( EXPANDED_CLASS );
-      tab.classList.add( TAB_ACTIVE_CLASS );
-      el.classList.add( BTN_ACTIVE_CLASS );
-    };
+      root.addClass( EXPANDED_CLASS );
+      tab.addClass( TAB_ACTIVE_CLASS );
+      el.addClass( BTN_ACTIVE_CLASS );
+    });
 
     userMenuSetup = function() {
-      userMenu.addEventListener( "click", function( e ) {
-        e.stopPropagation();
-      }, false );
-
-      username.addEventListener( "click", function() {
-        userMenu.classList.toggle( "tooltip-no-transition-on" );
-        username.classList.toggle( BTN_ACTIVE_CLASS );
-      }, false );
+      userMenu.click(function( e ) { e.stopPropagation(); });
+      username.click(function() {
+        userMenu.toggleClass( "tooltip-no-transition-on" );
+        username.toggleClass( BTN_ACTIVE_CLASS );
+      });
     };
 
     userMenuSetup();
 
     if ( feedbackCallback ) {
-      feedbackBtn.addEventListener( "click", feedbackCallback, false );
+      feedbackBtn.click( feedbackCallback );
     } else {
-      feedbackBtn.parentNode.removeChild( feedbackBtn );
+      feedbackBtn.remove();
     }
 
     if ( loginBtnCallback && logoutBtnCallback ) {
-      loginBtn.addEventListener( "click", loginBtnCallback, false );
-      logoutBtn.addEventListener( "click", logoutBtnCallback, false );
+      loginBtn.click( loginBtnCallback );
+      logoutBtn.click( logoutBtnCallback );
       // Default view
       this.views.logout();
     } else {
-      loginBtn.parentNode.removeChild( loginBtn );
-      logoutBtn.parentNode.removeChild( logoutBtn );
+      loginBtn.remove();
+      logoutBtn.remove();
     }
-
-    primary.addEventListener( "click", webmakerTabSetup, false );
-
   };
 });
