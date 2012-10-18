@@ -6,12 +6,9 @@
   vertical-align: middle;
   width: 16px;
   height: 16px;
-  background: blue;
+  background-image: url(../img/badge.png);
+  background-size: 16px 16px;
   cursor: pointer;
-}
-
-.webmaker-nav-container li.user-badges div.badge-ui-widget:hover {
-  background: slateblue;
 }
 
 .webmaker-nav-container li.user-badges div.badge-ui-widget ul {
@@ -30,8 +27,15 @@
 }
 
 .webmaker-nav-container li.user-badges div.badge-ui-unread {
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 9px;
+  line-height: 9px;
+  background: green;
+  border-radius: 4px;
+  padding: 1px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  display: inline-block;
 }
 
 .webmaker-nav-container li.user-badges div.badge-ui-widget ul li {
