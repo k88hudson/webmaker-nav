@@ -101,7 +101,6 @@
   position: relative;
 }
 .login-join .join {
-  pointer-events: auto;
   top: 100%;
   width: 200px;
   margin-top: 3px;
@@ -346,7 +345,7 @@
 /*********************************************************
 * Tooltip
 */
-*:hover > .tooptip:not(.tooltip-no-hover) {
+*:hover > .tooltip:not(.tooltip-no-hover) {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.3s ease 0.5s;
@@ -355,7 +354,7 @@
   -ms-transition: opacity 0.3s ease 0.5s;
   transition: opacity 0.3s ease 0.5s;
 }
-.tooptip {
+.tooltip {
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -379,7 +378,6 @@
   text-align: center;
   border: 1px solid #CCC;
   box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
 
   -webkit-transition: opacity 0.3s ease 0;
   -moz-transition: opacity 0.3s ease 0;
@@ -387,7 +385,7 @@
   -ms-transition: opacity 0.3s ease 0;
   transition: opacity 0.3s ease 0;
 }
-.tooptip.tooltip-on {
+.tooltip.tooltip-on {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.3s ease 0.5s;
@@ -396,15 +394,15 @@
   -ms-transition: opacity 0.3s ease 0.5s;
   transition: opacity 0.3s ease 0.5s;
 }
-.tooptip.tooltip-no-transition-on {
+.tooltip.tooltip-no-transition-on {
   opacity: 1;
   visibility: visible;
 }
-.tooptip.tooltip-error {
+.tooltip.tooltip-error {
   color: red;
 }
-.tooptip:after,
-.tooptip:before {
+.tooltip:after,
+.tooltip:before {
   content: "";
   position: absolute;
   top: -5px;
@@ -416,14 +414,14 @@
   border-right: 5px solid transparent;
   border-bottom: 5px solid #FFF;
 }
-.tooptip:after {
+.tooltip:after {
   z-index: 100000101;
 }
-.tooptip:before {
+.tooltip:before {
   top: -6px;
   border-bottom: 5px solid #CCC;
 }
-.tooptip.tooltip-user {
+.tooltip.tooltip-user {
   background: #3a3c3c;
   border: none;
   color: #FFF;
@@ -435,31 +433,82 @@
   padding: 0;
   text-align: left;
   border-radius: 0 0 2px 2px;
-  pointer-events: auto;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 }
-.tooptip.tooltip-user:after,
-.tooptip.tooltip-user:before {
+.tooltip.tooltip-user:after,
+.tooltip.tooltip-user:before {
   display: none;
 }
-.tooptip.tooltip-user ul {
+.tooltip.tooltip-user ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.tooptip.tooltip-user ul > li {
+.tooltip.tooltip-user ul > li {
   padding: 10px;
   padding-left: 10px;
   border-bottom: 1px solid #535656;
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
 }
-.tooptip.tooltip-user ul > li:last-child {
+.tooltip.tooltip-user ul > li:last-child {
   border-bottom: none;
 }
-.tooptip.tooltip-user ul > li a {
+.tooltip.tooltip-user ul > li a {
   cursor: pointer;
   text-decoration: none;
 }
+
+/*********************************************************
+* Tooltip big
+*/
+.tooltip.tooltip-big {
+  width: 250px;
+  left: 0;
+  margin-top: 9px;
+  margin-left: -25px;
+  text-align: left;
+  padding: 0;
+}
+.tooltip.tooltip-big:after,
+.tooltip.tooltip-big:before {
+  left: 33px;
+}
+.tooltip-big-heading {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.tooltip-big-inner {
+  padding: 10px 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.tooltip.tooltip-big ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/*********************************************************
+* Typography
+*/
+
+.webmaker-txt-light {
+  font-family: "Open Sans Light", "Open Sans", sans-serif;
+}
+
+.webmaker-h3,
+.webmaker-h4 {
+  margin: 1em 0 0.5em 0;
+}
+.webmaker-h3 {
+  font-size: 1.4em;
+}
+.webmaker-h4 {
+  font-size: 1.2em;
+}
+
+
 
 /* Login states */
 
