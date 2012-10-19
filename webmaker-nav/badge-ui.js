@@ -90,6 +90,7 @@ define([
         // toggle any menus.
         return;
       $(this).toggleClass("badge-ui-on");
+      $(".badge-ui-alert", widget).remove();
       if (self.badger)
         self.badger.markAllBadgesAsRead();
     });

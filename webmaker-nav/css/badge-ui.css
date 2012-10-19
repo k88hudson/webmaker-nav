@@ -37,10 +37,6 @@ div.badge-ui-widget .badge-ui-menu {
   cursor: auto;
 }
 
-div.badge-ui-widget.badge-ui-on .badge-ui-alert {
-  display: none;
-}
-
 div.badge-ui-widget .badge-ui-alert {
   box-shadow: 0 0 5px gold;
   margin-left: -1px;
