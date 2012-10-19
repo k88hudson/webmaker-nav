@@ -9,6 +9,7 @@ div.badge-ui-widget {
   background-image: url(../img/badge.png);
   background-size: 16px 16px;
   cursor: pointer;
+  line-height: normal;
 }
 
 div.badge-ui-widget .badge-ui-menu {
@@ -28,7 +29,7 @@ div.badge-ui-widget ul {
   padding: 0;
 }
 
-div.badge-ui-widget ul li .badge-ui-img {
+div.badge-ui-widget ul li .badge-ui-img img {
   width: 64px;
 }
 
@@ -67,7 +68,6 @@ div.badge-ui-widget ul li {
 
 div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
   font-size: 10px;
-  line-height: 12px;
 }
 
 .webmaker-nav-container:not(.logged-in) li.user-badges {
@@ -76,6 +76,22 @@ div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
 
 .badge-ui-name {
   font-size: 18px;
+}
+
+.badge-ui-desc {
+  font-size: 10px;
+}
+
+.badge-ui-unearned-badges li .badge-ui-img {
+  background-image: url(../img/badge-unearned.png);
+  width: 64px;
+  height: 64px;
+  background-size: 64px 64px;
+}
+
+.badge-ui-unearned-badges li .badge-ui-img img,
+.badge-ui-unearned-badges li .badge-ui-desc {
+  display: none;
 }
 
 /* ====== media ====== 

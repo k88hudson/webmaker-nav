@@ -47,6 +47,7 @@ define([
             badges.forEach(function(badge) {
               var item = $(LI_HTML);
               $('.badge-ui-name', item).text(badge.name);
+              $('.badge-ui-desc', item).text(badge.description);
               $('img', item).attr("src", badge.image);
               item.appendTo(list);
             });
