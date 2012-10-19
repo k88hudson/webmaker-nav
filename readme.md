@@ -41,6 +41,27 @@ When the user logs out, just call:
 webmakerNav.views.logout();
 ```
 
+Customizations to the HTML content of the nav bar can be added by
+pre-populating the container with custom content, e.g.:
+
+```html
+<div id="webmakerNavContainer">
+  <div webmaker-nav-role="webmaker-info">
+    This content will appear on the right side of the content of the
+    Webmaker tab.
+  </div>
+  <div webmaker-nav-role="join-tooltip">
+    This content will appear in a tooltip when the user hovers over the
+    login/signup button.
+  </div>
+  <ul webmaker-nav-role="user-options">
+    <!-- Any items added here will be added to the user options menu before
+         the final logout entry. -->
+    <li><a href="#/dashboard">My Projects</a></li>
+  </ul>
+</div>
+```
+
 For a full example, see `example/index.html`.
 
   [jquery]: http://jquery.com/

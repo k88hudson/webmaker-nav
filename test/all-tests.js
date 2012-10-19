@@ -107,4 +107,39 @@ defineTests([
     ok(!isTabActive("projects"), "projects tab isn't active after " +
                                  "clicking on another tab");
   });
+  
+  test("customizable user-options entries work", function() {
+    var ul = $('<ul webmaker-nav-role="user-options"></ul>');
+    var firstEntry = $('<li>hello</li>').appendTo(ul);
+    var secondEntry = $('<li>there</li>').appendTo(ul);
+    var logout = false;
+    var webmakerNav = new WebmakerNav({
+      container: container.append(ul),
+      loginBtnCallback: function() {},
+      logoutBtnCallback: function() { logout = true; }
+    });
+    equal($(".user-name ul").children().length, 3);
+    ok($(".user-name ul").children()[0] === firstEntry[0]);
+    ok($(".user-name ul").children()[1] === secondEntry[0]);
+    $(".user-name ul .logout-btn").click();
+    ok(logout);
+  });
+  
+  test("customizable webmaker-info content works", function() {
+    var info = $('<div webmaker-nav-role="webmaker-info">hi</div>');
+    var webmakerNav = new WebmakerNav({container: container.append(info)});
+    equal($(".webmaker-tab .secondary-info").children().length, 1);
+    ok($(".webmaker-tab .secondary-info").children()[0] === info[0]);
+  });
+  
+  test("customizable join-tooltip content works", function() {
+    var info = $('<div webmaker-nav-role="join-tooltip">hi</div>');
+    var webmakerNav = new WebmakerNav({
+      container: container.append(info),
+      loginBtnCallback: function() {},
+      logoutBtnCallback: function() {}
+    });
+    equal($(".login-join .join.tooptip").children().length, 1);
+    ok($(".login-join .join.tooptip").children()[0] === info[0]);
+  });
 });
