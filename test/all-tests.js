@@ -92,4 +92,19 @@ defineTests([
     equal(container.find(LOGIN_BTN + ":visible").length, 1,
           "login btn is visible again after logout");
   });
+  
+  test("clicking on a tab shows its content, hides others", function() {
+    function isTabActive(name) {
+      return $(".tab-" + name, container).hasClass("webmaker-tab-active");
+    }
+
+    var webmakerNav = new WebmakerNav({container: container.show()});
+
+    ok(!isTabActive("projects"), "projects tab isn't active before click");
+    $("a[data-tab='projects']", container).click();
+    ok(isTabActive("projects"), "projects tab is active after click");
+    $("a[data-tab='webmaker']", container).click();
+    ok(!isTabActive("projects"), "projects tab isn't active after " +
+                                 "clicking on another tab");
+  });
 });
