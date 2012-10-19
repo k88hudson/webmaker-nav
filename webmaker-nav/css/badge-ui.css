@@ -1,6 +1,6 @@
 /* BEGIN EXTREMELY TEMPORARY STYLES */
 
-div.badge-ui-widget {
+.badge-ui-widget {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -12,88 +12,49 @@ div.badge-ui-widget {
   line-height: normal;
 }
 
-div.badge-ui-widget .badge-ui-popover {
-  position: absolute;
-  top: 20px;
-  left: -4px;
-  padding: 8px;
-  background: white;
-  border: 1px solid lightgray;
-  color: gray;
-  z-index: 9001;
-  width: 250px;
-}
 
-/* Begin the pointy end of a popover. */
-
-div.badge-ui-widget .badge-ui-popover:after,
-div.badge-ui-widget .badge-ui-popover:before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 12px;
-  margin-left: -5px;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #FFF;
-}
-
-div.badge-ui-widget .badge-ui-popover:after {
-  z-index: 100000101;
-}
-
-div.badge-ui-widget.badge-ui-popover:before {
-  top: -6px;
-  border-bottom: 5px solid #CCC;
-}
-
-/* End the pointy end of a popover. */
-
-div.badge-ui-widget ul {
+.badge-ui-widget ul {
   list-style-type: none;
   padding: 0;
 }
 
-div.badge-ui-widget ul li .badge-ui-img img {
+.badge-ui-widget ul li .badge-ui-img img {
   width: 64px;
 }
 
-div.badge-ui-widget .badge-ui-popover {
+.badge-ui-widget .badge-ui-popover {
   cursor: auto;
 }
 
-div.badge-ui-widget .badge-ui-alert {
+.badge-ui-widget .badge-ui-alert {
   box-shadow: 0 0 5px gold;
-  margin-left: -1px;
 }
 
-div.badge-ui-widget .badge-ui-alert img.badge-ui-img {
+.badge-ui-widget .badge-ui-alert img.badge-ui-img {
   width: 90px;
 }
 
-div.badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
+.badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
   display: none;
 }
 
-div.badge-ui-unread {
+.badge-ui-unread {
   font-size: 9px;
   line-height: 9px;
   background: green;
   border-radius: 4px;
   padding: 1px;
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 0;
+  right: 0;
   display: inline-block;
 }
 
-div.badge-ui-widget ul li {
+.badge-ui-widget ul li {
   padding: 4px;
 }
 
-div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
+.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
   font-size: 10px;
 }
 
@@ -101,8 +62,19 @@ div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
   display: none;
 }
 
+.badge-ui-widget .webmaker-h4 {
+  color: #888;
+  font-size: 1.1em;
+  border-top: 1px dashed #CCC;
+  padding-top: 0.5em;
+}
+.badge-ui-title {
+  margin: 0;
+}
+
 .badge-ui-name {
-  font-size: 18px;
+  font-size: 1.3em;
+  font-weight: 700;
 }
 
 .badge-ui-desc {
@@ -121,10 +93,25 @@ div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
   display: none;
 }
 
+/*********************************************************
+* Helpers
+*/
+.badge-ui-fl-right {
+  float: right;
+}
+.badge-ui-block {
+  color: #777;
+  padding: 1em 0;
+  font-size: 11px;
+}
+.badge-ui-block:first-child {
+  padding-top: 0;
+}
+
 /* ====== media ====== 
  * From http://www.stubbornella.org/?p=497 */
 
-.badge-ui-media {margin:10px;}
+.badge-ui-media {margin: 10px 0;}
 .badge-ui-media, .badge-ui-bd {overflow:hidden; _overflow:visible; zoom:1;}
 .badge-ui-media .badge-ui-img {float:left; margin-right: 10px;}
 .badge-ui-media .badge-ui-img img{display:block;}
