@@ -12,7 +12,7 @@ div.badge-ui-widget {
   line-height: normal;
 }
 
-div.badge-ui-widget .badge-ui-menu {
+div.badge-ui-widget .badge-ui-popover {
   position: absolute;
   top: 20px;
   left: -4px;
@@ -26,8 +26,8 @@ div.badge-ui-widget .badge-ui-menu {
 
 /* Begin the pointy end of a popover. */
 
-div.badge-ui-widget .badge-ui-menu:after,
-div.badge-ui-widget .badge-ui-menu:before {
+div.badge-ui-widget .badge-ui-popover:after,
+div.badge-ui-widget .badge-ui-popover:before {
   content: "";
   position: absolute;
   top: -5px;
@@ -40,11 +40,11 @@ div.badge-ui-widget .badge-ui-menu:before {
   border-bottom: 5px solid #FFF;
 }
 
-div.badge-ui-widget .badge-ui-menu:after {
+div.badge-ui-widget .badge-ui-popover:after {
   z-index: 100000101;
 }
 
-div.badge-ui-widget.badge-ui-menu:before {
+div.badge-ui-widget.badge-ui-popover:before {
   top: -6px;
   border-bottom: 5px solid #CCC;
 }
@@ -60,7 +60,7 @@ div.badge-ui-widget ul li .badge-ui-img img {
   width: 64px;
 }
 
-div.badge-ui-widget .badge-ui-menu {
+div.badge-ui-widget .badge-ui-popover {
   cursor: auto;
 }
 
