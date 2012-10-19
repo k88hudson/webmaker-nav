@@ -14,8 +14,8 @@ div.badge-ui-widget {
 
 div.badge-ui-widget .badge-ui-menu {
   position: absolute;
-  top: 16px;
-  left: 0;
+  top: 20px;
+  left: -4px;
   padding: 8px;
   background: white;
   border: 1px solid lightgray;
@@ -23,6 +23,33 @@ div.badge-ui-widget .badge-ui-menu {
   z-index: 9001;
   width: 250px;
 }
+
+/* Begin the pointy end of a popover. */
+
+div.badge-ui-widget .badge-ui-menu:after,
+div.badge-ui-widget .badge-ui-menu:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 12px;
+  margin-left: -5px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #FFF;
+}
+
+div.badge-ui-widget .badge-ui-menu:after {
+  z-index: 100000101;
+}
+
+div.badge-ui-widget.badge-ui-menu:before {
+  top: -6px;
+  border-bottom: 5px solid #CCC;
+}
+
+/* End the pointy end of a popover. */
 
 div.badge-ui-widget ul {
   list-style-type: none;
@@ -40,6 +67,10 @@ div.badge-ui-widget .badge-ui-menu {
 div.badge-ui-widget .badge-ui-alert {
   box-shadow: 0 0 5px gold;
   margin-left: -1px;
+}
+
+div.badge-ui-widget .badge-ui-alert img.badge-ui-img {
+  width: 90px;
 }
 
 div.badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {

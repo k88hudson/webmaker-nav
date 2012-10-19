@@ -75,6 +75,7 @@ define([
             $(".badge-ui-name", alert).text(badge.name);
             $("img", alert).attr("src", badge.image);
             alert.appendTo(alertContainer)
+              .children()
               .hide()
               .slideDown()
               .delay(alertDisplayTime)
