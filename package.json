@@ -1,0 +1,12 @@
+{ "name": "webmaker-nav"
+, "description": "Universal navigation for Mozilla Webmaker properties."
+, "version": "0.1.0"
+, "private": true
+, "scripts" :
+  { "test" : "node test/phantom/run.js" }
+, "dependencies":
+  { "express": "2.5.x"
+  }
+, "engines":
+  { "node":  "*" }
+}
