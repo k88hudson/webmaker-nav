@@ -26,6 +26,7 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
         logoutBtnCallback,
         userMenuSetup;
 
+    this.container = root;
     this.views = {
       login: function( context ) {
         root.addClass( "logged-in" );

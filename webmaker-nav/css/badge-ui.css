@@ -1,0 +1,133 @@
+/* BEGIN EXTREMELY TEMPORARY STYLES */
+
+div.badge-ui-widget {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background-image: url(../img/badge.png);
+  background-size: 16px 16px;
+  cursor: pointer;
+  line-height: normal;
+}
+
+div.badge-ui-widget .badge-ui-popover {
+  position: absolute;
+  top: 20px;
+  left: -4px;
+  padding: 8px;
+  background: white;
+  border: 1px solid lightgray;
+  color: gray;
+  z-index: 9001;
+  width: 250px;
+}
+
+/* Begin the pointy end of a popover. */
+
+div.badge-ui-widget .badge-ui-popover:after,
+div.badge-ui-widget .badge-ui-popover:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 12px;
+  margin-left: -5px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #FFF;
+}
+
+div.badge-ui-widget .badge-ui-popover:after {
+  z-index: 100000101;
+}
+
+div.badge-ui-widget.badge-ui-popover:before {
+  top: -6px;
+  border-bottom: 5px solid #CCC;
+}
+
+/* End the pointy end of a popover. */
+
+div.badge-ui-widget ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+div.badge-ui-widget ul li .badge-ui-img img {
+  width: 64px;
+}
+
+div.badge-ui-widget .badge-ui-popover {
+  cursor: auto;
+}
+
+div.badge-ui-widget .badge-ui-alert {
+  box-shadow: 0 0 5px gold;
+  margin-left: -1px;
+}
+
+div.badge-ui-widget .badge-ui-alert img.badge-ui-img {
+  width: 90px;
+}
+
+div.badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
+  display: none;
+}
+
+div.badge-ui-unread {
+  font-size: 9px;
+  line-height: 9px;
+  background: green;
+  border-radius: 4px;
+  padding: 1px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  display: inline-block;
+}
+
+div.badge-ui-widget ul li {
+  padding: 4px;
+}
+
+div.badge-ui-widget .badge-ui-backpack .badge-ui-bd {
+  font-size: 10px;
+}
+
+.webmaker-nav-container:not(.logged-in) li.user-badges {
+  display: none;
+}
+
+.badge-ui-name {
+  font-size: 18px;
+}
+
+.badge-ui-desc {
+  font-size: 10px;
+}
+
+.badge-ui-unearned-badges li .badge-ui-img {
+  background-image: url(../img/badge-unearned.png);
+  width: 64px;
+  height: 64px;
+  background-size: 64px 64px;
+}
+
+.badge-ui-unearned-badges li .badge-ui-img img,
+.badge-ui-unearned-badges li .badge-ui-desc {
+  display: none;
+}
+
+/* ====== media ====== 
+ * From http://www.stubbornella.org/?p=497 */
+
+.badge-ui-media {margin:10px;}
+.badge-ui-media, .badge-ui-bd {overflow:hidden; _overflow:visible; zoom:1;}
+.badge-ui-media .badge-ui-img {float:left; margin-right: 10px;}
+.badge-ui-media .badge-ui-img img{display:block;}
+.badge-ui-media .badge-ui-imgExt {float:right; margin-left: 10px;}
+
+/* END EXTREMELY TEMPORARY STYLES */
