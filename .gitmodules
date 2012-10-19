@@ -1,0 +1,3 @@
+[submodule "example/clopenbadger"]
+	path = example/clopenbadger
+	url = git://github.com/toolness/clopenbadger-consumer.git
