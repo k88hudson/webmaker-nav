@@ -13,13 +13,13 @@
 }
 .webmaker-nav-top {
   background: #3a3c3c;
-  height: 29px;
+  height: 30px;
 }
 .webmaker-nav {
   padding: 0;
   margin: 0;
   list-style: none;
-  line-height: 29px;
+  line-height: 30px;
   font-size: 1em;
   color: #FFF;
 }
@@ -67,7 +67,7 @@
 }
 .primary {
   float: left;
-  height: 29px;
+  height: 30px;
 }
 .primary > li {
   border-right: 1px solid #474949;
@@ -90,6 +90,7 @@
 }
 .user-info {
   float: right;
+  height: 30px;
   margin-right: 150px;
 }
 .user-info li {
@@ -102,10 +103,9 @@
 .login-join .join {
   pointer-events: auto;
   top: 100%;
-  margin-top: 15px;
   width: 200px;
+  margin-top: 3px;
   margin-left: -100px;
-  z-index: 100;
 }
 .login-join .join h3 {
   margin: 5px 0;
@@ -135,7 +135,7 @@
   background: #535656;
   border: 1px solid #333;
   box-shadow: inset 0 1px 0 0 #797d7d;
-  padding: 0 12px 0 37px;
+  padding: 0 11px 0 37px;
   border-radius: 3px;
   margin-right: 5px;
   overflow: hidden;
@@ -194,11 +194,11 @@
 .webmaker-nav > .user > a {
   padding-left: 8px;
 }
+
 .tooltip.tooltip-user {
   background: #3a3c3c;
   border: none;
   color: #FFF;
-  border-radius: 0;
   margin-top: 0;
   left: 0;
   right: 0;
@@ -331,7 +331,6 @@
   background: url( ../img/webmaker-logo.png ) no-repeat;
 }
 .tab-webmaker .webmaker-slogan {
-  float: left;
   width: 420px;
   padding: 20px;
   margin: 0;
@@ -364,7 +363,7 @@
   left: 50%;
   margin-top: -7px;
   margin-left: -55px;
-  z-index: 100000100;
+  z-index: 10000;
   width: 110px;
   padding: 10px;
   background: #FFF;
@@ -381,7 +380,6 @@
   border: 1px solid #CCC;
   box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.3);
   pointer-events: none;
-  /* csslint-ignore: better for browsers that support it, not critical for those that don't */
 
   -webkit-transition: opacity 0.3s ease 0;
   -moz-transition: opacity 0.3s ease 0;
@@ -429,7 +427,6 @@
   background: #3a3c3c;
   border: none;
   color: #FFF;
-  border-radius: 0;
   margin-top: 0;
   left: 0;
   right: 0;
@@ -454,7 +451,7 @@
   padding: 10px;
   padding-left: 10px;
   border-bottom: 1px solid #535656;
-  box-shadow: inset 0 -1px 0 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
 }
 .tooptip.tooltip-user ul > li:last-child {
   border-bottom: none;
