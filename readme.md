@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/toolness/webmaker-nav.png)](https://travis-ci.org/toolness/webmaker-nav)
+
 # Webmaker nav
 
 This is a first iteration of the universal nav for Popcorn/Thimble. It includes a primary navigation and secondary navigation tabs, as well as a sample header.
