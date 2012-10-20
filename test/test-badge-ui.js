@@ -7,13 +7,14 @@ defineTests([
   "clopenbadger/test/fake-clopenbadger-server"
 ], function($, BadgeUI, Clopenbadger, FakeServer) {
   var badger,
-      wmnav;
-  
+      wmnav,
+      div;
+
   module("badge-ui", {
     setup: function() {
-      wmnav = {
-        container: $('<div><ul class="user-info"></ul></div>')
-      };
+      div = $('<div><ul class="user-info"></ul></div>')
+        .appendTo(document.body);
+      wmnav = {container: div};
       FakeServer.setup({
         urlPrefix: "http://fake-clopenbadger",
         availableBadges: {
@@ -50,21 +51,20 @@ defineTests([
       });
     },
     teardown: function() {
+      div.remove();
     }
   });
   
   test("inserts badge list item into ul.user-info", function() {
-    var div = $('<div><ul class="user-info"></ul></div>');
     var ui = BadgeUI(wmnav);
-    equal($('ul.user-info li.user-badges', wmnav.container).length, 1);
+    equal($('ul.user-info li.user-badges', div).length, 1);
   });
   
   test("unearned badges are listed alphabetically", function() {
     var ui = BadgeUI(wmnav);
     ui.setBadger(badger);
     FakeServer.flushResponses();
-    var names = wmnav.container
-      .find('.badge-ui-unearned-badges li .badge-ui-name')
+    var names = div.find('.badge-ui-unearned-badges li .badge-ui-name')
       .map(function() { return $(this).text(); }).get();
     deepEqual(names, ['Blarg', 'Feedback Maniac', 'First Login']);
   });
@@ -76,9 +76,50 @@ defineTests([
     FakeServer.time = 2; badger.credit('BLARGED');
     FakeServer.time = 3; badger.credit('GAVE_FEEDBACK');
     FakeServer.flushResponses();
-    var names = wmnav.container
-      .find('.badge-ui-earned-badges li .badge-ui-name')
+    var names = div.find('.badge-ui-earned-badges li .badge-ui-name')
       .map(function() { return $(this).text(); }).get();
     deepEqual(names, ['Feedback Maniac', 'Blarg', 'First Login']);
+  });
+  
+  test("unread badge count is updated", function() {
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(badger);
+    FakeServer.flushResponses();
+    equal($('.badge-ui-unread', div).text(), '0');
+    badger.credit('LOGGED_IN');
+    FakeServer.flushResponses();
+    equal($('.badge-ui-unread', div).text(), '1');
+  });
+  
+  test("can set self.badger to null", function() {
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(null);
+    ok(ui.badger === null);
+  });
+
+  test("detail popover visibility is toggled on click", function() {
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(badger);
+    FakeServer.flushResponses();
+    equal($('.badge-ui-detail:visible', div).length, 0);
+    $('.badge-ui-widget', div).click();
+    equal($('.badge-ui-detail:visible', div).length, 1);
+    $('.badge-ui-widget', div).click();
+    equal($('.badge-ui-detail:visible', div).length, 0);
+  });
+  
+  test("badges marked as read when detail popover is viewed", function() {
+    var triggered = false;
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(badger);
+    badger.credit('LOGGED_IN');
+    FakeServer.flushResponses();
+    badger.on('change:unreadBadgeCount', function() {
+      equal(badger.unreadBadgeCount, 0);
+      triggered = true;
+    });
+    $('.badge-ui-widget', div).click();
+    FakeServer.flushResponses();
+    ok(triggered);
   });
 });
