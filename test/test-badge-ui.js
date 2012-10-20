@@ -122,4 +122,26 @@ defineTests([
     FakeServer.flushResponses();
     ok(triggered);
   });
+  
+  test("badge award popover is displayed", function() {
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(badger);
+    FakeServer.flushResponses();
+    equal($('.badge-ui-alert:visible', div).length, 0);
+    badger.credit('LOGGED_IN');
+    FakeServer.flushResponses();
+    equal($('.badge-ui-alert:visible', div).length, 1);
+  });
+  
+  test("clicking on badge detail popover doesn't hide it", function() {
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(badger);
+    FakeServer.flushResponses();
+    $('.badge-ui-widget', div).click();
+    equal($('.badge-ui-detail:visible', div).length, 1);
+    var child = $('.badge-ui-detail', div).children()[0];
+    ok(child);
+    $(child).click();
+    equal($('.badge-ui-detail:visible', div).length, 1);
+  });
 });
