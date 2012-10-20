@@ -11,7 +11,8 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       TAB_PREFIX = "tab-";
 
   return function( options ) {
-    var root = $( options.container ).html( BASE_LAYOUT )
+    var customizations = $( "[webmaker-nav-role]", options.container ),
+        root = $( options.container ).html( BASE_LAYOUT )
           .find( ".webmaker-nav-container" ),
         feedbackBtn = $( ".webmaker-feedback-btn", root ),
         loginBtn = $( ".login", root ),
@@ -24,7 +25,8 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
         feedbackCallback,
         loginBtnCallback,
         logoutBtnCallback,
-        userMenuSetup;
+        userMenuSetup,
+        applyCustomizations;
 
     this.container = root;
     this.views = {
@@ -71,6 +73,29 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       el.addClass( BTN_ACTIVE_CLASS );
     });
 
+    applyCustomizations = function() {
+      var customizers = {
+        'join-tooltip': function() {
+          $('.login-join .join.tooptip', root).empty().append(this);
+        },
+        'webmaker-info': function() {
+          $('.webmaker-tab .secondary-info', tabContainer)
+            .empty().append(this);
+        },
+        'user-options': function() {
+          $(this).children().each(function() {
+            logoutBtn.closest("li").before(this);
+          });
+        }
+      };
+      
+      customizations.each(function() {
+        var role = $(this).attr("webmaker-nav-role");
+        if (role in customizers)
+          customizers[role].call(this);
+      });
+    };
+    
     userMenuSetup = function() {
       userMenu.click(function( e ) { e.stopPropagation(); });
       username.click(function() {
@@ -80,7 +105,8 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
     };
 
     userMenuSetup();
-
+    applyCustomizations();
+    
     if ( feedbackCallback ) {
       feedbackBtn.click( feedbackCallback );
     } else {
