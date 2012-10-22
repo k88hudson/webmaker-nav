@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/toolness/webmaker-nav.png)](https://travis-ci.org/toolness/webmaker-nav)
+[![Build Status](https://travis-ci.org/k88hudson/webmaker-nav.png)](https://travis-ci.org/k88hudson/webmaker-nav)
 
 # Webmaker nav
 
