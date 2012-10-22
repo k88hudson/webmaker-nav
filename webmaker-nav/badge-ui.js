@@ -78,8 +78,8 @@ define([
               .children()
               .hide()
               .slideDown()
-              .delay(alertDisplayTime)
-              .slideUp(function() { alert.remove(); });
+              //.delay(alertDisplayTime)
+              //.slideUp(function() { alert.remove(); });
           });
         });
       }
