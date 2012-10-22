@@ -139,7 +139,7 @@ defineTests([
       loginBtnCallback: function() {},
       logoutBtnCallback: function() {}
     });
-    equal($(".login-join .join.tooptip").children().length, 1);
-    ok($(".login-join .join.tooptip").children()[0] === info[0]);
+    equal($(".login-join .join.tooltip").children().length, 1);
+    ok($(".login-join .join.tooltip").children()[0] === info[0]);
   });
 });

@@ -76,7 +76,7 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
     applyCustomizations = function() {
       var customizers = {
         'join-tooltip': function() {
-          $('.login-join .join.tooptip', root).empty().append(this);
+          $('.login-join .join.tooltip', root).empty().append(this);
         },
         'webmaker-info': function() {
           $('.webmaker-tab .secondary-info', tabContainer)
