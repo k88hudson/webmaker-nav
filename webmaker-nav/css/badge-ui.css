@@ -112,7 +112,6 @@
  * From http://www.stubbornella.org/?p=497 */
 
 .badge-ui-media {margin: 10px 0;}
-.badge-ui-media, .badge-ui-bd {overflow:hidden; _overflow:visible; zoom:1;}
 .badge-ui-media .badge-ui-img {float:left; margin-right: 10px;}
 .badge-ui-media .badge-ui-img img{display:block;}
 .badge-ui-media .badge-ui-imgExt {float:right; margin-left: 10px;}

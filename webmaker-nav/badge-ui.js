@@ -86,7 +86,7 @@ define([
     };
 
     widget.click(function(event) {
-      if ($(event.target).closest(".badge-ui-popover").length)
+      if ($(event.target).closest(".tooltip-big").length)
         // They clicked in a popover, not on the widget itself, so don't
         // toggle any menus.
         return;
