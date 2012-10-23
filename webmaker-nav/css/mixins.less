@@ -1,0 +1,63 @@
+.selectable(@param) {
+  -webkit-touch-callout: @param;
+  -webkit-user-select: @param;
+  -moz-user-select: @param;
+  -ms-user-select: @param;
+  user-select: @param;
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -o-transition: @transition;
+  -ms-transition: @transition;
+  transition: @transition;
+}
+.transform( @transformation ) {
+  -webkit-transform: @transformation;
+  -moz-transform: @transformation;
+  -o-transform: @transformation;
+  -ms-transform: @transformation;
+  transform: @transformation;
+}
+
+.box-sizing( @property ) {
+  // https://developer.mozilla.org/En/CSS/Box-sizing
+  -webkit-box-sizing: @property; // Chrome 10-
+  -moz-box-sizing: @property;
+  -ms-box-sizing: @property; // IE 8+
+  box-sizing: @property; // Opera, Safari 5.1+, Chrome 10+
+}
+
+.clearfix() {
+  &:after {
+    /* Clearfix */
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.triangle( "right", @size, @color, @borderSize, @borderColor ) {
+  &:after, &:before {
+    left: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  &:after {
+    border-left-color: @color;
+    border-width: @size;
+    top: 50%;
+    margin-top: -@size;
+  }
+  &:before {
+    border-left-color: @borderColor;
+    border-width: @size + @borderSize + 1;
+    top: 50%;
+    margin-top: -( @size + @borderSize + 1 );
+  }
+}

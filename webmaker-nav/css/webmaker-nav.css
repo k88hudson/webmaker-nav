@@ -1,6 +1,7 @@
 /*********************************************************
 * Webmaker nav
 */
+/* Note -- this file is compiled from webmakernav.less */
 .webmaker-nav-container {
   font-size: 12px;
   border-bottom: 1px solid #2d2f2f;
@@ -13,19 +14,19 @@
 }
 .webmaker-nav-top {
   background: #3a3c3c;
-  height: 30px;
+  height: 29px;
 }
 .webmaker-nav {
+  height: 29px;
   padding: 0;
   margin: 0;
   list-style: none;
-  line-height: 30px;
+  line-height: 29px;
   font-size: 1em;
   color: #FFF;
 }
 .webmaker-nav > li {
   float: left;
-  height: 100%;
 }
 .webmaker-nav > li > a,
 .webmaker-nav > li > .link {
@@ -65,9 +66,11 @@
   box-shadow: 0 -6px 0 1px #2d2f2f, 1px -8px 10px -2px #212222;
   z-index: 10000;
 }
+/*********************************************************
+* Primary menu
+*/
 .primary {
   float: left;
-  height: 30px;
 }
 .primary > li {
   border-right: 1px solid #474949;
@@ -90,42 +93,16 @@
 }
 .user-info {
   float: right;
-  height: 30px;
   margin-right: 150px;
 }
 .user-info li {
   border-right: none;
 }
-.login-join {
+.wm-login-container {
   cursor: pointer;
   position: relative;
 }
-.login-join .join {
-  top: 100%;
-  width: 200px;
-  margin-top: 3px;
-  margin-left: -100px;
-}
-.login-join .join h3 {
-  margin: 5px 0;
-}
-.login-join .join h2 {
-  margin-top: 0;
-}
-.login-join .join .login {
-  display: inline-block;
-}
-.login-join .join img {
-  width: 40px;
-  position: absolute;
-  top: 50px;
-  left: 4px;
-}
-.login-join .join p {
-  text-align: left;
-  margin-left: 40px;
-}
-.login-join .login {
+.wm-login-btn {
   color: #FFF;
   line-height: 22px;
   top: 3px;
@@ -134,12 +111,12 @@
   background: #535656;
   border: 1px solid #333;
   box-shadow: inset 0 1px 0 0 #797d7d;
-  padding: 0 11px 0 37px;
+  padding: 0 12px 0 37px;
   border-radius: 3px;
   margin-right: 5px;
   overflow: hidden;
 }
-.login-join .login:after {
+.wm-login-btn:after {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAA4klEQVR42o2RWaqEMBRE3YaCiDjPwQGcd9CrysLv4wTyoLFD90dxqbp1EgdPRB7Kskznea6Zn/aPoKoqUUrJOI5m4l2QBfSyLHKep1zXZSae3An1fS/7vst931bGkzuhaZrsLVbGkzuheZ7lOI6HyJ2QUkqv6yrbtv0LT+6E7G0UrfBfP3lZlpoXH4ZBmHgn5Pv+KwxDfqp0XQdgJp6c/RsUBIGOokiSJDE/s21bACbe5Ozp0TdAHMdSFIXUdS1N01C2wpObPT36HifwCJzI0iX29Oh7XP0E3CB9L01TzM+i/wePv4ZE5RtAngAAAABJRU5ErkJggg==") 10px center no-repeat;
   content: "";
   display: block;
@@ -150,7 +127,7 @@
   top: 0;
   z-index: 10;
 }
-.login-join .login:before {
+.wm-login-btn:before {
   content: "";
   display: block;
   width: 30px;
@@ -167,8 +144,34 @@
   transform: rotate(45deg);
   box-shadow: 1px 0 0 2px rgba(0, 0, 0, 0.05);
 }
-.login-join .login:hover {
+.wm-login-btn:hover {
   background: #606363;
+}
+.tooltip.wm-join-tooltip {
+  pointer-events: auto;
+  top: 100%;
+  margin-top: 15px;
+  width: 200px;
+  margin-left: -100px;
+}
+.tooltip.wm-join-tooltip h3 {
+  margin: 5px 0;
+}
+.tooltip.wm-join-tooltip h2 {
+  margin-top: 0;
+}
+.tooltip.wm-join-tooltip .wm-login-btn {
+  display: inline-block;
+}
+.tooltip.wm-join-tooltip img {
+  width: 40px;
+  position: absolute;
+  top: 50px;
+  left: 4px;
+}
+.tooltip.wm-join-tooltip p {
+  text-align: left;
+  margin-left: 40px;
 }
 .user-info > .notification-badge > a {
   display: none;
@@ -193,40 +196,6 @@
 .webmaker-nav > .user > a {
   padding-left: 8px;
 }
-
-.tooltip.tooltip-user {
-  background: #3a3c3c;
-  border: none;
-  color: #FFF;
-  margin-top: 0;
-  left: 0;
-  right: 0;
-  width: auto;
-  margin-left: 0;
-  padding: 0;
-  text-align: left;
-  border-radius: 0 0 2px 2px;
-}
-.tooltip.tooltip-user:after,
-.tooltip.tooltip-user:before {
-  display: none;
-}
-.tooltip.tooltip-user ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-.tooltip.tooltip-user ul > li {
-  padding: 5px;
-  padding-left: 10px;
-  border-bottom: 1px solid #535656;
-}
-.tooltip.tooltip-user ul > li:last-child {
-  border-bottom: none;
-}
-.tooltip.tooltip-user ul > li a {
-  cursor: pointer;
-}
 /*********************************************************
 * Tabs
 */
@@ -240,17 +209,12 @@
 .webmaker-tab {
   background: #3a3c3c;
 }
-.webmaker-tab li > a {
-  background: none;
-}
-.webmaker-tab {
-  box-shadow: inset 0 1px 0 0 #535656, 0 -1px 0 0 #2d2f2f;
-}
 .webmaker-tab {
   position: relative;
   width: 100%;
   color: #FFF;
   overflow: hidden;
+  box-shadow: inset 0 1px 0 0 #535656, 0 -1px 0 0 #2d2f2f;
   height: 0;
   -webkit-transition: height 0.1s ease;
   -moz-transition: height 0.1s ease;
@@ -263,15 +227,11 @@
   line-height: 50px;
 }
 .webmaker-tab li > a {
+  background: none;
   font-size: 1.25em;
 }
 .webmaker-tab.webmaker-tab-active {
   height: 50px;
-}
-.webmaker-section-icon {
-  float: left;
-  height: 100%;
-  padding-left: 10px;
 }
 .tab-webmaker.webmaker-tab-active {
   height: 100px;
@@ -285,40 +245,11 @@
   padding: 20px;
   border-left: 1px solid #535656;
   height: 100%;
-  font-size: 15px;
+  font-size: 1.25em;
   line-height: 1.3;
 }
 .tab-webmaker .secondary-info p {
   margin: 0;
-}
-.tab-webmaker .webmaker-button {
-  float: left;
-  padding-top: 20px;
-}
-.tab-webmaker .webmaker-button a:hover {
-  color: #FFF;
-}
-.tab-webmaker .block {
-  float: left;
-  display: block;
-  color: #EEE;
-  text-decoration: none;
-  width: 250px;
-  padding-right: 20px;
-  border-left: 1px solid #535656;
-  height: 100%;
-}
-.tab-webmaker .block:hover {
-  color: #FFF;
-}
-.tab-webmaker .block h4 {
-  font-size: 16px;
-  line-height: 1;
-  margin: 24px 0 6px 0;
-}
-.tab-webmaker .block p {
-  margin: 0;
-  line-height: 1.4;
 }
 .tab-webmaker .webmaker-logo {
   float: left;
@@ -327,9 +258,10 @@
   margin-top: 11px;
   width: 70px;
   height: 70px;
-  background: url( ../img/webmaker-logo.png ) no-repeat;
+  background: url(../img/webmaker-logo.png) no-repeat;
 }
 .tab-webmaker .webmaker-slogan {
+  float: left;
   width: 420px;
   padding: 20px;
   margin: 0;
@@ -362,7 +294,7 @@
   left: 50%;
   margin-top: -7px;
   margin-left: -55px;
-  z-index: 10000;
+  z-index: 1000000;
   width: 110px;
   padding: 10px;
   background: #FFF;
@@ -378,7 +310,6 @@
   text-align: center;
   border: 1px solid #CCC;
   box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.3);
-
   -webkit-transition: opacity 0.3s ease 0;
   -moz-transition: opacity 0.3s ease 0;
   -o-transition: opacity 0.3s ease 0;
@@ -415,7 +346,7 @@
   border-bottom: 5px solid #FFF;
 }
 .tooltip:after {
-  z-index: 100000101;
+  z-index: 1000001;
 }
 .tooltip:before {
   top: -6px;
@@ -425,6 +356,7 @@
   background: #3a3c3c;
   border: none;
   color: #FFF;
+  border-radius: 0;
   margin-top: 0;
   left: 0;
   right: 0;
@@ -433,6 +365,7 @@
   padding: 0;
   text-align: left;
   border-radius: 0 0 2px 2px;
+  pointer-events: auto;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 }
 .tooltip.tooltip-user:after,
@@ -448,7 +381,7 @@
   padding: 10px;
   padding-left: 10px;
   border-bottom: 1px solid #535656;
-  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -1px 0 0px rgba(0, 0, 0, 0.2);
 }
 .tooltip.tooltip-user ul > li:last-child {
   border-bottom: none;
@@ -457,7 +390,6 @@
   cursor: pointer;
   text-decoration: none;
 }
-
 /*********************************************************
 * Tooltip big
 */
@@ -488,15 +420,12 @@
   margin: 0;
   list-style: none;
 }
-
 /*********************************************************
 * Typography
 */
-
 .webmaker-txt-light {
   font-family: "Open Sans Light", "Open Sans", sans-serif;
 }
-
 .webmaker-h3,
 .webmaker-h4 {
   margin: 1em 0 0.5em 0;
@@ -507,15 +436,10 @@
 .webmaker-h4 {
   font-size: 1.2em;
 }
-
-
-
 /* Login states */
-
 .webmaker-nav-container:not(.logged-in) .user {
   display: none;
 }
-
-.webmaker-nav-container.logged-in .login-join {
+.webmaker-nav-container.logged-in .wm-login-container {
   display: none;
 }

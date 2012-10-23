@@ -15,7 +15,7 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
         root = $( options.container ).html( BASE_LAYOUT )
           .find( ".webmaker-nav-container" ),
         feedbackBtn = $( ".webmaker-feedback-btn", root ),
-        loginBtn = $( ".login", root ),
+        loginBtn = $( ".wm-login-btn", root ),
         logoutBtn = $( ".logout-btn", root ),
         userMenu = $( ".tooltip-user", root ),
         username = $( ".user-name", root ),
@@ -76,7 +76,7 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
     applyCustomizations = function() {
       var customizers = {
         'join-tooltip': function() {
-          $('.login-join .join.tooltip', root).empty().append(this);
+          $('.wm-join-tooltip', root).empty().append(this);
         },
         'webmaker-info': function() {
           $('.webmaker-tab .secondary-info', tabContainer)

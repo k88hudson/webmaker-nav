@@ -13,7 +13,7 @@ defineTests([
     }
   });
   
-  var LOGIN_BTN = ".login",
+  var LOGIN_BTN = ".wm-login-btn",
       LOGOUT_BTN = ".logout-btn",
       FEEDBACK_BTN = ".webmaker-feedback-btn";
   
@@ -139,7 +139,7 @@ defineTests([
       loginBtnCallback: function() {},
       logoutBtnCallback: function() {}
     });
-    equal($(".login-join .join.tooltip").children().length, 1);
-    ok($(".login-join .join.tooltip").children()[0] === info[0]);
+    equal($(".wm-join-tooltip").children().length, 1);
+    ok($(".wm-join-tooltip").children()[0] === info[0]);
   });
 });
