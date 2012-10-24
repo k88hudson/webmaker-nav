@@ -53,8 +53,16 @@ pre-populating the container with custom content, e.g.:
     Webmaker tab.
   </div>
   <div webmaker-nav-role="join-tooltip">
-    This content will appear in a tooltip when the user hovers over the
-    login/signup button.
+    <div class="wm-unit">
+      <h3>Log in to my awesome app to do awesome stuff!</h3>
+      <div class="wm-unit-side">
+        <img src="some-image">
+      </div>
+      <div class="wm-unit-body">
+        <p>Don't have an account yet? All you need is an email to get started. Webmaker uses <strong>Persona</strong>, which puts you in control of your identity through a single email address of your choice.</p>
+      </div>
+    </div>
+  </div>
   </div>
   <ul webmaker-nav-role="user-options">
     <!-- Any items added here will be added to the user options menu before
