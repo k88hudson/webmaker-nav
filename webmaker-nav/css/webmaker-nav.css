@@ -275,6 +275,29 @@
   box-sizing: border-box;
 }
 /*********************************************************
+* Blocks
+*/
+.wm-unit:after {
+  /* Clearfix */
+
+  content: "";
+  display: table;
+  clear: both;
+}
+.wm-unit-side,
+.wm-unit-side-r {
+  margin-right: 10px;
+}
+.wm-unit-side {
+  float: left;
+}
+.wm-unit-side-r {
+  float: right;
+}
+.wm-unit-body {
+  display: table;
+}
+/*********************************************************
 * Tooltip
 */
 *:hover > .tooltip:not(.tooltip-no-hover) {

@@ -15,7 +15,6 @@
   cursor: pointer;
 }
 
-
 .badge-ui-widget ul {
   list-style-type: none;
   padding: 0;
@@ -25,17 +24,10 @@
   width: 64px;
 }
 
-.badge-ui-widget .badge-ui-popover {
-  cursor: auto;
-}
-
 .badge-ui-widget .badge-ui-alert {
   box-shadow: 0 0 5px gold;
 }
 
-.badge-ui-widget .badge-ui-alert img.badge-ui-img {
-  width: 90px;
-}
 
 .badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
   display: none;
@@ -95,28 +87,5 @@
 .badge-ui-unearned-badges li .badge-ui-desc {
   display: none;
 }
-
-/*********************************************************
-* Helpers
-*/
-.badge-ui-fl-right {
-  float: right;
-}
-.badge-ui-block {
-  color: #777;
-  padding: 1em 0;
-  font-size: 11px;
-}
-.badge-ui-block:first-child {
-  padding-top: 0;
-}
-
-/* ====== media ====== 
- * From http://www.stubbornella.org/?p=497 */
-
-.badge-ui-media {margin: 10px 0;}
-.badge-ui-media .badge-ui-img {float:left; margin-right: 10px;}
-.badge-ui-media .badge-ui-img img{display:block;}
-.badge-ui-media .badge-ui-imgExt {float:right; margin-left: 10px;}
 
 /* END EXTREMELY TEMPORARY STYLES */
