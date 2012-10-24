@@ -4,12 +4,15 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  line-height: normal;
+}
+
+.badge-ui-icon {
   width: 16px;
   height: 16px;
   background-image: url(../img/badge.png);
   background-size: 16px 16px;
   cursor: pointer;
-  line-height: normal;
 }
 
 
