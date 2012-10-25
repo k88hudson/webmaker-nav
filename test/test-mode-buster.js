@@ -60,4 +60,11 @@ defineTests([
     document.body.dispatchEvent(makeMousedownEvent());
     equal(canceled, 0);
   });
+  
+  test("ModeBuster disables itself after first oncancel", function() {
+    mb.enable();
+    document.body.dispatchEvent(makeMousedownEvent());
+    document.body.dispatchEvent(makeMousedownEvent());
+    equal(canceled, 1);
+  });
 });
