@@ -14,7 +14,8 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
          // The class prefix for each individual tab
         TAB_PREFIX = "tab-";
 
-    var primary = $( ".primary", root );
+    var primary = $( ".primary", root ),
+        window = root[0].ownerDocument.defaultView;
 
     primary.click(function webmakerTabSetup( e ) {
       var currentActiveBtn = $( "." + BTN_ACTIVE_CLASS, primary ),
@@ -43,6 +44,15 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       tab.addClass( TAB_ACTIVE_CLASS );
       el.addClass( BTN_ACTIVE_CLASS );
     });
+    
+    window.addEventListener("mousedown", function(event) {
+      var isOutsideTab = !$(tabContainer).has(event.target).length;
+      var isOutsidePrimary = !$(primary).has(event.target).length;
+
+      if (isOutsideTab && isOutsidePrimary) {
+        $( "." + BTN_ACTIVE_CLASS, primary ).click();
+      }
+    }, true);
   }
   
   return function( options ) {
