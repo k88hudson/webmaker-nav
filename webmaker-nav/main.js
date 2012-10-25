@@ -1,53 +1,24 @@
+"use strict";
+
 define( [ "jquery", "text!./templates/webmaker-nav.html" ],
   function( $, BASE_LAYOUT ) {
 
-      // Added to tab when it's open
-  var TAB_ACTIVE_CLASS = "webmaker-tab-active",
       // Added to elements in primary nav when they are active
-      BTN_ACTIVE_CLASS = "webmaker-btn-active",
-      // Added to body when secondary nav is expanded
-      EXPANDED_CLASS = "webmaker-expanded",
-       // The class prefix for each individual tab
-      TAB_PREFIX = "tab-";
+  var BTN_ACTIVE_CLASS = "webmaker-btn-active";
 
-  return function( options ) {
-    var customizations = $( "[webmaker-nav-role]", options.container ),
-        root = $( options.container ).html( BASE_LAYOUT )
-          .find( ".webmaker-nav-container" ),
-        feedbackBtn = $( ".webmaker-feedback-btn", root ),
-        loginBtn = $( ".wm-login-btn", root ),
-        logoutBtn = $( ".logout-btn", root ),
-        userMenu = $( ".tooltip-user", root ),
-        username = $( ".user-name", root ),
-        usernameInner = $( ".user-name-container", root ),
-        primary = $( ".primary", root ),
-        tabContainer = $( ".webmaker-tabs", root ),
-        feedbackCallback,
-        loginBtnCallback,
-        logoutBtnCallback,
-        userMenuSetup,
-        applyCustomizations;
+  function setupTabs( root, tabContainer ) {
+        // Added to tab when it's open
+    var TAB_ACTIVE_CLASS = "webmaker-tab-active",
+        // Added to body when secondary nav is expanded
+        EXPANDED_CLASS = "webmaker-expanded",
+         // The class prefix for each individual tab
+        TAB_PREFIX = "tab-";
 
-    this.container = root;
-    this.views = {
-      login: function( context ) {
-        root.addClass( "logged-in" );
-        usernameInner.html( context.username );
-      },
-      logout: function() {
-        root.removeClass( "logged-in" );
-        userMenu.removeClass( "tooltip-no-transition-on" );
-        username.removeClass( BTN_ACTIVE_CLASS );
-      }
-    };
-
-    feedbackCallback = options.feedbackCallback;
-    loginBtnCallback = options.loginBtnCallback;
-    logoutBtnCallback = options.logoutBtnCallback;
+    var primary = $( ".primary", root );
 
     primary.click(function webmakerTabSetup( e ) {
       var currentActiveBtn = $( "." + BTN_ACTIVE_CLASS, primary ),
-          currentActiveTab = $( "." + TAB_ACTIVE_CLASS ),
+          currentActiveTab = $( "." + TAB_ACTIVE_CLASS, tabContainer ),
           el = $( e.target ),
           tabName,
           tab;
@@ -72,6 +43,41 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       tab.addClass( TAB_ACTIVE_CLASS );
       el.addClass( BTN_ACTIVE_CLASS );
     });
+  }
+  
+  return function( options ) {
+    var customizations = $( "[webmaker-nav-role]", options.container ),
+        root = $( options.container ).html( BASE_LAYOUT )
+          .find( ".webmaker-nav-container" ),
+        feedbackBtn = $( ".webmaker-feedback-btn", root ),
+        loginBtn = $( ".wm-login-btn", root ),
+        logoutBtn = $( ".logout-btn", root ),
+        userMenu = $( ".tooltip-user", root ),
+        username = $( ".user-name", root ),
+        usernameInner = $( ".user-name-container", root ),
+        tabContainer = $( ".webmaker-tabs", root ),
+        feedbackCallback,
+        loginBtnCallback,
+        logoutBtnCallback,
+        setupUserMenu,
+        applyCustomizations;
+
+    this.container = root;
+    this.views = {
+      login: function( context ) {
+        root.addClass( "logged-in" );
+        usernameInner.html( context.username );
+      },
+      logout: function() {
+        root.removeClass( "logged-in" );
+        userMenu.removeClass( "tooltip-no-transition-on" );
+        username.removeClass( BTN_ACTIVE_CLASS );
+      }
+    };
+    
+    feedbackCallback = options.feedbackCallback;
+    loginBtnCallback = options.loginBtnCallback;
+    logoutBtnCallback = options.logoutBtnCallback;
 
     applyCustomizations = function() {
       var customizers = {
@@ -96,7 +102,7 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       });
     };
     
-    userMenuSetup = function() {
+    setupUserMenu = function() {
       userMenu.click(function( e ) { e.stopPropagation(); });
       username.click(function() {
         userMenu.toggleClass( "tooltip-no-transition-on" );
@@ -104,7 +110,8 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       });
     };
 
-    userMenuSetup();
+    setupTabs( root, tabContainer );
+    setupUserMenu();
     applyCustomizations();
     
     if ( feedbackCallback ) {
