@@ -2,9 +2,11 @@
 * Webmaker nav
 */
 /* Note -- this file is compiled from webmakernav.less */
-.webmaker-nav-container {
+#webmaker {
   font-size: 12px;
   border-bottom: 1px solid #2d2f2f;
+  background: #3a3c3c;
+  overflow: hidden;
 }
 .webmaker-nav-container a {
   color: #FFF;
