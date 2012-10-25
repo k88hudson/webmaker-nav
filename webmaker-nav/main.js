@@ -1,7 +1,7 @@
 "use strict";
 
-define( [ "jquery", "text!./templates/webmaker-nav.html" ],
-  function( $, BASE_LAYOUT ) {
+define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
+  function( $, ModeBuster, BASE_LAYOUT ) {
 
       // Added to elements in primary nav when they are active
   var BTN_ACTIVE_CLASS = "webmaker-btn-active";
@@ -15,7 +15,12 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
         TAB_PREFIX = "tab-";
 
     var primary = $( ".primary", root ),
-        window = root[0].ownerDocument.defaultView;
+        modeBuster = ModeBuster({
+          container: primary.add( tabContainer ),
+          oncancel: function() {
+            $( "." + BTN_ACTIVE_CLASS, primary ).click();
+          }
+        });
 
     primary.click(function webmakerTabSetup( e ) {
       var currentActiveBtn = $( "." + BTN_ACTIVE_CLASS, primary ),
@@ -34,6 +39,7 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       if ( currentActiveTab.is( tab ) ) {
         currentActiveTab.removeClass( TAB_ACTIVE_CLASS );
         root.removeClass( EXPANDED_CLASS );
+        modeBuster.disable();
         return;
       }
       else {
@@ -43,16 +49,8 @@ define( [ "jquery", "text!./templates/webmaker-nav.html" ],
       root.addClass( EXPANDED_CLASS );
       tab.addClass( TAB_ACTIVE_CLASS );
       el.addClass( BTN_ACTIVE_CLASS );
+      modeBuster.enable();
     });
-    
-    window.addEventListener("mousedown", function(event) {
-      var isOutsideTab = !$(tabContainer).has(event.target).length;
-      var isOutsidePrimary = !$(primary).has(event.target).length;
-
-      if (isOutsideTab && isOutsidePrimary) {
-        $( "." + BTN_ACTIVE_CLASS, primary ).click();
-      }
-    }, true);
   }
   
   return function( options ) {
