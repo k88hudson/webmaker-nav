@@ -8,7 +8,8 @@ define(["jquery"], function($) {
         window = container[0].ownerDocument.defaultView;
     
     function onMouseDown(event) {
-      var isOutsideModalArea = !$(container).has(event.target).length;
+      var isOutsideModalArea = !$(container).has(event.target).length &&
+                               !$(container).is(event.target);
 
       if (isOutsideModalArea) {
         self.disable();
