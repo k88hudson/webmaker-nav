@@ -2,10 +2,11 @@
 
 define([
   "jquery",
+  "./mode-buster",
   "text!./templates/badge-ui-widget.html",
   "text!./templates/badge-ui-list-item.html",
   "text!./templates/badge-ui-alert.html"
-], function($, WIDGET_HTML, LI_HTML, ALERT_HTML) {
+], function($, ModeBuster, WIDGET_HTML, LI_HTML, ALERT_HTML) {
   function getEarnedBadges(badger) {
     return badger.getBadges().filter(function(badge) {
       return badge.isEarned;
@@ -32,6 +33,12 @@ define([
       .find(".badge-ui-widget");
     var alertContainer = $(options.alertContainer || widget);
     var alertDisplayTime = options.alertDisplayTime || 2000;
+    var modeBuster = ModeBuster({
+      container: widget,
+      oncancel: function() {
+        widget.click();
+      }
+    });
 
     var self = {
       badger: null,
@@ -91,9 +98,14 @@ define([
         // toggle any menus.
         return;
       $(this).toggleClass("badge-ui-on");
+      if ($(this).hasClass("badge-ui-on")) {
+        if (self.badger)
+          self.badger.markAllBadgesAsRead();
+        modeBuster.enable();
+      } else {
+        modeBuster.disable();
+      }
       $(".badge-ui-alert", widget).remove();
-      if (self.badger)
-        self.badger.markAllBadgesAsRead();
     });
 
     $(".badge-ui-backpack button", widget).click(function() {
