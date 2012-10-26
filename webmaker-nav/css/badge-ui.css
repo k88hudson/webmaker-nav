@@ -10,9 +10,14 @@
 .badge-ui-icon {
   width: 16px;
   height: 16px;
+  cursor: pointer;
+}
+
+.badge-ui-icon-img {
+  width: 16px;
+  height: 16px;
   background-image: url(../img/badge.png);
   background-size: 16px 16px;
-  cursor: pointer;
 }
 
 .badge-ui-widget ul {
