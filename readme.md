@@ -48,11 +48,11 @@ pre-populating the container with custom content, e.g.:
 
 ```html
 <div id="webmakerNavContainer">
-  <div webmaker-nav-role="webmaker-info">
+  <div data-webmaker-nav-role="webmaker-info">
     This content will appear on the right side of the content of the
     Webmaker tab.
   </div>
-  <div webmaker-nav-role="join-tooltip">
+  <div data-webmaker-nav-role="join-tooltip">
     <div class="wm-unit">
       <h3>Log in to my awesome app to do awesome stuff!</h3>
       <div class="wm-unit-side">
@@ -64,7 +64,7 @@ pre-populating the container with custom content, e.g.:
     </div>
   </div>
   </div>
-  <ul webmaker-nav-role="user-options">
+  <ul data-webmaker-nav-role="user-options">
     <!-- Any items added here will be added to the user options menu before
          the final logout entry. -->
     <li><a href="#/dashboard">My Projects</a></li>
