@@ -339,10 +339,6 @@
   -ms-transition: opacity 0.3s ease 0.5s;
   transition: opacity 0.3s ease 0.5s;
 }
-.tooltip.tooltip-no-transition-on {
-  opacity: 1;
-  visibility: visible;
-}
 .tooltip.tooltip-error {
   color: red;
 }
@@ -365,6 +361,10 @@
 .tooltip:before {
   top: -6px;
   border-bottom: 5px solid #CCC;
+}
+.user-name:hover .tooltip-user {
+  opacity: 1;
+  visibility: visible;
 }
 .tooltip.tooltip-user {
   background: #3a3c3c;

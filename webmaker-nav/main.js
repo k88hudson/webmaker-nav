@@ -60,14 +60,11 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
         feedbackBtn = $( ".webmaker-feedback-btn", root ),
         loginBtn = $( ".wm-login-btn", root ),
         logoutBtn = $( ".logout-btn", root ),
-        userMenu = $( ".tooltip-user", root ),
-        username = $( ".user-name", root ),
         usernameInner = $( ".user-name-container", root ),
         tabContainer = $( ".webmaker-tabs", root ),
         feedbackCallback,
         loginBtnCallback,
         logoutBtnCallback,
-        setupUserMenu,
         applyCustomizations;
 
     this.container = root;
@@ -78,8 +75,6 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
       },
       logout: function() {
         root.removeClass( "logged-in" );
-        userMenu.removeClass( "tooltip-no-transition-on" );
-        username.removeClass( BTN_ACTIVE_CLASS );
       }
     };
     
@@ -110,16 +105,7 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
       });
     };
     
-    setupUserMenu = function() {
-      userMenu.click(function( e ) { e.stopPropagation(); });
-      username.click(function() {
-        userMenu.toggleClass( "tooltip-no-transition-on" );
-        username.toggleClass( BTN_ACTIVE_CLASS );
-      });
-    };
-
     setupTabs( root, tabContainer );
-    setupUserMenu();
     applyCustomizations();
     
     if ( feedbackCallback ) {
