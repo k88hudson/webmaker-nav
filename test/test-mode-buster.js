@@ -32,6 +32,32 @@ defineTests([
     }
   });
 
+  test("setEnabled(false) disables", function() {
+    mb.setEnabled(true);
+    mb.setEnabled(false);
+    deepEqual(mb.isEnabled(), false);
+  });
+  
+  test("setEnabled(true) enables", function() {
+    mb.setEnabled(true);
+    deepEqual(mb.isEnabled(), true);
+  });
+  
+  test("isEnabled() === false by default", function() {
+    deepEqual(mb.isEnabled(), false);
+  });
+  
+  test("isEnabled() === true after enabled", function() {
+    mb.enable();
+    deepEqual(mb.isEnabled(), true);
+  });
+
+  test("isEnabled() === false after disabled", function() {
+    mb.enable();
+    mb.disable();
+    deepEqual(mb.isEnabled(), false);
+  });
+  
   test("events in container don't trigger oncancel", function() {
     mb.enable();
     div[0].dispatchEvent(makeMousedownEvent());

@@ -15,7 +15,8 @@ defineTests([
   
   var LOGIN_BTN = ".wm-login-btn",
       LOGOUT_BTN = ".logout-btn",
-      FEEDBACK_BTN = ".webmaker-feedback-btn";
+      FEEDBACK_BTN = ".webmaker-feedback-btn",
+      USER_MENU = ".tooltip-user";
   
   var container;
   
@@ -91,6 +92,46 @@ defineTests([
     webmakerNav.views.logout();
     equal(container.find(LOGIN_BTN + ":visible").length, 1,
           "login btn is visible again after logout");
+  });
+
+  test("logging out hides user menu", function() {
+    var webmakerNav = new WebmakerNav({
+      container: container.show(),
+      loginBtnCallback: function() {},
+      logoutBtnCallback: function() {}
+    });
+    var userMenu = container.find(USER_MENU);
+    var usernameWidget = container.find(".user-name");
+
+    webmakerNav.views.login({username: "blegh"});
+    equal($(LOGOUT_BTN, container).css("visibility"), "hidden",
+         "logout button not visible before activating user menu");
+    usernameWidget.click();
+    equal($(LOGOUT_BTN, container).css("visibility"), "visible",
+         "logout button is visible after activating user menu");
+    webmakerNav.views.logout();
+    equal(userMenu.css("visibility"), "hidden",
+          "user menu is hidden after logging out");
+  });
+  
+  test("clicking on user menu toggles its visibility", function() {
+    var webmakerNav = new WebmakerNav({
+      container: container.show(),
+      loginBtnCallback: function() {},
+      logoutBtnCallback: function() {}
+    });
+    var userMenu = container.find(USER_MENU);
+    var usernameWidget = container.find(".user-name");
+    
+    webmakerNav.views.login({username: "blegh"});
+    equal(userMenu.css("visibility"), "hidden",
+          "user menu is hidden by default");
+    usernameWidget.click();
+    equal(userMenu.css("visibility"), "visible",
+          "user menu is visible after clicking on it");
+    usernameWidget.click();
+    equal(userMenu.css("visibility"), "hidden",
+          "user menu is hidden after clicking on it again");
   });
   
   test("clicking on a tab shows its content, hides others", function() {

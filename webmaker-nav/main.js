@@ -53,6 +53,31 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
     });
   }
   
+  function UserMenuUI( container ) {
+    var self = {},
+        usernameInner = $( ".user-name-container", container ),
+        userMenu = $( ".tooltip-user", container ),
+        modeBuster = ModeBuster({
+          container: container,
+          oncancel: function() { self.toggle( false ); }
+        });
+    
+    self.setUsername = function( username ) {
+      usernameInner.text( username );
+    };
+    
+    self.toggle = function( optionalSwitch ) {
+      userMenu.toggleClass( "tooltip-no-transition-on", optionalSwitch );
+      container.toggleClass( BTN_ACTIVE_CLASS, optionalSwitch );
+      modeBuster.setEnabled( container.hasClass( BTN_ACTIVE_CLASS ) );
+    };
+    
+    userMenu.click(function( e ) { e.stopPropagation(); });
+    container.click(function() { self.toggle(); });
+    
+    return self;
+  }
+  
   return function( options ) {
     var customizations = $( "[data-webmaker-nav-role]", options.container )
           .remove(),
@@ -61,26 +86,22 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
         feedbackBtn = $( ".webmaker-feedback-btn", root ),
         loginBtn = $( ".wm-login-btn", root ),
         logoutBtn = $( ".logout-btn", root ),
-        userMenu = $( ".tooltip-user", root ),
-        username = $( ".user-name", root ),
-        usernameInner = $( ".user-name-container", root ),
         tabContainer = $( ".webmaker-tabs", root ),
+        userMenuUI = UserMenuUI( $( ".user-name", root ) ),
         feedbackCallback,
         loginBtnCallback,
         logoutBtnCallback,
-        setupUserMenu,
         applyCustomizations;
 
     this.container = root;
     this.views = {
       login: function( context ) {
         root.addClass( "logged-in" );
-        usernameInner.html( context.username );
+        userMenuUI.setUsername( context.username );
       },
       logout: function() {
         root.removeClass( "logged-in" );
-        userMenu.removeClass( "tooltip-no-transition-on" );
-        username.removeClass( BTN_ACTIVE_CLASS );
+        userMenuUI.toggle( false );
       }
     };
     
@@ -110,17 +131,8 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
           customizers[role].call(this);
       });
     };
-    
-    setupUserMenu = function() {
-      userMenu.click(function( e ) { e.stopPropagation(); });
-      username.click(function() {
-        userMenu.toggleClass( "tooltip-no-transition-on" );
-        username.toggleClass( BTN_ACTIVE_CLASS );
-      });
-    };
 
     setupTabs( root, tabContainer );
-    setupUserMenu();
     applyCustomizations();
     
     if ( feedbackCallback ) {

@@ -3,6 +3,7 @@
 define(["jquery"], function($) {
   return function ModeBuster(options) {
     var self = {},
+        isEnabled = false,
         container = options.container,
         oncancel = options.oncancel,
         window = container[0].ownerDocument.defaultView;
@@ -17,12 +18,26 @@ define(["jquery"], function($) {
       }
     }
     
+    self.setEnabled = function(setEnabled) {
+      setEnabled ? self.enable() : self.disable();
+    };
+
+    self.isEnabled = function() {
+      return isEnabled;
+    };
+    
     self.enable = function() {
-      window.addEventListener("mousedown", onMouseDown, true);
+      if (!isEnabled) {
+        window.addEventListener("mousedown", onMouseDown, true);
+        isEnabled = true;
+      }
     };
     
     self.disable = function() {
-      window.removeEventListener("mousedown", onMouseDown, true);
+      if (isEnabled) {
+        window.removeEventListener("mousedown", onMouseDown, true);
+        isEnabled = false;
+      }
     };
     
     return self;
