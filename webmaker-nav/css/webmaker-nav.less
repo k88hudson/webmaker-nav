@@ -4,6 +4,7 @@
 
 /* Note -- this file is compiled from webmakernav.less */
 @import "mixins";
+@import "buttons";
 
 // SPACING
 @webmakernavheight: 29px;
@@ -296,15 +297,13 @@
 */
 .wm-unit {
   .clearfix();
-  &-side,
-  &-side-r {
-    margin-right: 10px;
-  }
   &-side {
     float: left;
+    margin-right: 10px;
   }
   &-side-r {
     float: right;
+    margin-left: 10px;
   }
   &-body {
     display: table;

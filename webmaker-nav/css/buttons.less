@@ -1,0 +1,53 @@
+@lightgrey: #EEE;
+@blue: #319EF0;
+@green: #D83920;
+
+.wm-button {
+  display: inline-block;
+  padding: 0 12px;
+  white-space: nowrap;
+  .box-sizing(border-box);
+
+  height: 36px;
+  line-height: 34px;
+  border-radius: 2px;
+
+  font-size: 12px;
+  cursor: pointer;
+
+  // Basic style is a light grey button
+  background: @lightgrey;
+  color: #777;
+  border: 1px solid darken(@lightgrey, 25%);
+  box-shadow: 0 5px 3px -4px fade(black, 30%),
+    inset 0 0 0 1px fade(white, 10%);
+  &:hover {
+    background: #F5F5F5;
+    box-shadow: 0 4px 6px -4px fade(black, 40%),
+      inset 0  0 0 1px darken(@lightgrey, 25%);
+  }
+
+  &.wm-button-blue {
+    .gradient("vertical", lighten(@blue, 10%), @blue);
+    border-color: darken(@blue, 4%);
+    color: #FFF;
+    &:hover {
+      .gradient("vertical", lighten(@blue, 15%), lighten(@blue, 5%));
+      border-color: darken(@blue, 5%);
+      box-shadow: 0 4px 7px -4px fade(black, 60%);
+    }
+  }
+
+  &.wm-button-green {
+    background: @green;
+    border-color: darken(@green, 10%);
+    box-shadow: 0 5px 3px -4px fade(black, 20%);
+    color: #FFF;
+    &:hover {
+      background: lighten(@green, 4%);
+      border-color: darken(@green, 10%);
+      box-shadow: 0 4px 7px -4px fade(black, 60%);
+    }
+  }
+
+}
