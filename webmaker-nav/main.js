@@ -54,7 +54,8 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
   }
   
   return function( options ) {
-    var customizations = $( "[webmaker-nav-role]", options.container ),
+    var customizations = $( "[data-webmaker-nav-role]", options.container )
+          .remove(),
         root = $( options.container ).html( BASE_LAYOUT )
           .find( ".webmaker-nav-container" ),
         feedbackBtn = $( ".webmaker-feedback-btn", root ),
@@ -104,7 +105,7 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
       };
       
       customizations.each(function() {
-        var role = $(this).attr("webmaker-nav-role");
+        var role = $(this).attr("data-webmaker-nav-role");
         if (role in customizers)
           customizers[role].call(this);
       });
