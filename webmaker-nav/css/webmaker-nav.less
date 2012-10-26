@@ -328,10 +328,6 @@
     visibility: visible;
     .transition( opacity 0.3s ease 0.5s );
   }
-  &.tooltip-no-transition-on {
-    opacity: 1;
-    visibility: visible;
-  }
   &.tooltip-error {
     color: red;
   }
@@ -381,6 +377,11 @@
 }
 
 // The user menu
+.user-name:hover .tooltip-user {
+  opacity: 1;
+  visibility: visible;
+}
+
 .tooltip.tooltip-user {
   background: @darkgrey;
   border: none;
