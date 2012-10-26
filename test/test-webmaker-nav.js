@@ -109,12 +109,13 @@ defineTests([
   });
   
   test("customizable user-options entries work", function() {
-    var ul = $('<ul webmaker-nav-role="user-options"></ul>');
+    var ul = $('<ul data-webmaker-nav-role="user-options"></ul>')
+      .appendTo(container);
     var firstEntry = $('<li>hello</li>').appendTo(ul);
     var secondEntry = $('<li>there</li>').appendTo(ul);
     var logout = false;
     var webmakerNav = new WebmakerNav({
-      container: container.append(ul),
+      container: container,
       loginBtnCallback: function() {},
       logoutBtnCallback: function() { logout = true; }
     });
@@ -126,14 +127,15 @@ defineTests([
   });
   
   test("customizable webmaker-info content works", function() {
-    var info = $('<div webmaker-nav-role="webmaker-info">hi</div>');
+    var info = $('<div data-webmaker-nav-role="webmaker-info">hi</div>');
     var webmakerNav = new WebmakerNav({container: container.append(info)});
     equal($(".webmaker-tab .secondary-info").children().length, 1);
     ok($(".webmaker-tab .secondary-info").children()[0] === info[0]);
+    equal(info.text(), 'hi');
   });
   
   test("customizable join-tooltip content works", function() {
-    var info = $('<div webmaker-nav-role="join-tooltip">hi</div>');
+    var info = $('<div data-webmaker-nav-role="join-tooltip">hi</div>');
     var webmakerNav = new WebmakerNav({
       container: container.append(info),
       loginBtnCallback: function() {},
@@ -141,5 +143,6 @@ defineTests([
     });
     equal($(".wm-join-tooltip").children().length, 1);
     ok($(".wm-join-tooltip").children()[0] === info[0]);
+    equal(info.text(), 'hi');
   });
 });
