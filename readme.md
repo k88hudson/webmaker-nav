@@ -63,13 +63,6 @@ pre-populating the container with custom content, e.g.:
       </div>
     </div>
   </div>
-  </div>
-  <ul data-webmaker-nav-role="user-options">
-    <!-- Any items added here will be added to the user options menu before
-         the final logout entry. -->
-    <li><a href="#/dashboard">My Projects</a></li>
-  </ul>
-</div>
 ```
 
 For a full example, see `example/index.html`.
