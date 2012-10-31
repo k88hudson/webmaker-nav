@@ -144,4 +144,44 @@ defineTests([
     $(child).click();
     equal($('.badge-ui-detail:visible', div).length, 1);
   });
+  
+  test("backpack panel display is toggled on window.OpenBadges", function() {
+    var ui = BadgeUI(wmnav);
+    window.OpenBadges = null;
+    ui.setBadger(badger);
+    badger.credit('LOGGED_IN');
+    FakeServer.flushResponses();
+    $('.badge-ui-widget', div).click();
+    equal($(".badge-ui-push-to-backpack:visible", div).length, 0,
+         "backpack panel not shown if window.OpenBadges is falsy");
+    $('.badge-ui-widget', div).click();
+    window.OpenBadges = {};
+    $('.badge-ui-widget', div).click();
+    equal($(".badge-ui-push-to-backpack:visible", div).length, 1,
+         "backpack panel shown if window.OpenBadges is truthy");
+  });
+  
+  test("clicking on + Backpack button invokes issuer API", function() {
+    var ui = BadgeUI(wmnav);
+
+    expect(4);
+    window.OpenBadges = {
+      issue: function(assertions, callback) {
+        deepEqual(assertions, [
+          "http://fake-clopenbadger/foo@bar.org/FIRST_LOGIN"
+        ], "assertions passed to OpenBadges.issue() are correct");
+        callback();
+        ok(true, "callback is a function and doesn't throw");
+      }
+    };
+    ui.setBadger(badger);
+    badger.credit('LOGGED_IN');
+    FakeServer.flushResponses();
+    $('.badge-ui-widget', div).click();
+    equal($('.tooltip:visible', div).length, 1,
+          "badge popover is visible before clicking + Backpack button");
+    $(".badge-ui-push-to-backpack button", div).click();
+    equal($('.tooltip:visible', div).length, 0,
+         "badge popover hides after clicking + Backpack button");
+  });
 });
