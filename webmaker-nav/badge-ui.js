@@ -33,6 +33,7 @@ define([
       .find(".badge-ui-widget");
     var alertContainer = $(options.alertContainer || widget);
     var alertDisplayTime = options.alertDisplayTime || 2000;
+    var backpackPanel = widget.find(".badge-ui-push-to-backpack");
     var modeBuster = ModeBuster({
       container: widget,
       oncancel: function() {
@@ -101,6 +102,7 @@ define([
       if ($(this).hasClass("badge-ui-on")) {
         if (self.badger)
           self.badger.markAllBadgesAsRead();
+        backpackPanel.toggle(!!window.OpenBadges);
         modeBuster.enable();
       } else {
         modeBuster.disable();
@@ -108,8 +110,13 @@ define([
       $(".badge-ui-alert", widget).remove();
     });
 
-    $(".badge-ui-backpack button", widget).click(function() {
-      alert("TODO: Implement this!");
+    $("button", backpackPanel).click(function() {
+      var assertions = [];
+      widget.click();
+      Object.keys(self.badger.earnedBadges).forEach(function(shortname) {
+        assertions.push(self.badger.earnedBadges[shortname].assertionUrl);
+      });
+      window.OpenBadges.issue(assertions, function() {});
     });
 
     return self;
