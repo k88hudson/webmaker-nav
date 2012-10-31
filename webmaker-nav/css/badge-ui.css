@@ -28,6 +28,9 @@
   box-shadow: 0 0 5px gold;
 }
 
+.badge-ui-widget .badge-ui-alert .badge-ui-img {
+  width: 106px;
+}
 
 .badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
   display: none;
