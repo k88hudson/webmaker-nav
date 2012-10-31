@@ -72,6 +72,7 @@ defineTests([
   test("earned badges are listed reverse-chronologically", function() {
     var ui = BadgeUI(wmnav);
     ui.setBadger(badger);
+    FakeServer.flushResponses();
     FakeServer.time = 1; badger.credit('LOGGED_IN');
     FakeServer.time = 2; badger.credit('BLARGED');
     FakeServer.time = 3; badger.credit('GAVE_FEEDBACK');
