@@ -84,7 +84,7 @@
   font-style: normal;
 }
 .webmaker-nav-container {
-  font-family: "Open Sans";
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 12px;
   border-bottom: 1px solid #2d2f2f;
 }
