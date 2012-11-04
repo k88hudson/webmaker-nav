@@ -332,9 +332,10 @@
   margin-top: 11px;
   width: 70px;
   height: 70px;
-  background: url(../img/webmaker-logo.png ) no-repeat;
+  background: url(../img/webmaker-logo.png) no-repeat;
 }
 .tab-webmaker .webmaker-slogan {
+  float: left;
   width: 420px;
   padding: 20px;
   margin: 0;

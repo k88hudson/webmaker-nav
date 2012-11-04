@@ -39,7 +39,10 @@ function autoCompileLESS(dirname, pathnames) {
 if (process.argv[2] && process.argv[2].match(/^[0-9]+$/))
   port = parseInt(process.argv[2]);
 
-app.use(autoCompileLESS(dirname, ['/webmaker-nav/css/webmaker-nav.css']));
+app.use(autoCompileLESS(dirname, [
+  '/webmaker-nav/css/webmaker-nav.css',
+  '/webmaker-nav/css/badge-ui.css'
+]));
 app.use(express.static(dirname));
 
 app.listen(port, function() {
