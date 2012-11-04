@@ -33,6 +33,10 @@
     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p><input type="checkbox" id="fail-on-init"> 
+      Simulate badge server initialization failure</p>
+    <p>Simulated badge server response time (ms): 
+      <input type="text" id="response-time" value="0"></p>
   </div>
 
   <script src="require.js"></script>
@@ -88,6 +92,13 @@
           token: "fake token",
           email: "testuser@mozilla.org"
         });
+        if ($("#fail-on-init")[0].checked)
+          FakeServer.modifyQueuedResponses(function(info) {
+            if (info.path == '/v1/badges') {
+              info.response.status = 500;
+              info.response.statusText = 'Internal Server Error';
+            }
+          });
         webmakerNav.views.login({username: "testuser@mozilla.org"});
         badgeUI.setBadger(badger);
         badger.credit("LOGGED_IN");
@@ -104,6 +115,9 @@
     });
     var badgeUI = new BadgeUI(webmakerNav);
 
+    $("#response-time").bind("change keyup", function() {
+      FakeServer.responseTime = $(this).val();
+    });
     // Uncomment these to automatically show parts of the UI, which is
     // useful for tweaking CSS on dialogs, etc.
     //$(".wm-login-btn").click();
