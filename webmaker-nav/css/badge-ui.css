@@ -1,4 +1,6 @@
-/* BEGIN EXTREMELY TEMPORARY STYLES */
+/* LESS files under notify/ should contain everything needed
+   for the different notification animations. Simply import
+   the style you want to enable. */
 @-webkit-keyframes bounce {
   0% {
     -webkit-transform: translatey(0);
@@ -9,6 +11,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   20% {
@@ -20,6 +23,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   40% {
@@ -31,6 +35,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   55% {
@@ -42,6 +47,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   70% {
@@ -53,6 +59,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   78% {
@@ -64,6 +71,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   86% {
@@ -75,6 +83,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 }
@@ -88,6 +97,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   20% {
@@ -99,6 +109,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   40% {
@@ -110,6 +121,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   55% {
@@ -121,6 +133,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   70% {
@@ -132,6 +145,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   78% {
@@ -143,6 +157,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   86% {
@@ -154,6 +169,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 }
@@ -167,6 +183,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   20% {
@@ -178,6 +195,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   40% {
@@ -189,6 +207,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   55% {
@@ -200,6 +219,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   70% {
@@ -211,6 +231,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   78% {
@@ -222,6 +243,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   86% {
@@ -233,6 +255,93 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+@-ms-keyframes bounce {
+  0% {
+    -webkit-transform: translatey(0);
+    -moz-transform: translatey(0);
+    -o-transform: translatey(0);
+    -ms-transform: translatey(0);
+    transform: translatey(0);
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    -webkit-transform: translatey(-7px);
+    -moz-transform: translatey(-7px);
+    -o-transform: translatey(-7px);
+    -ms-transform: translatey(-7px);
+    transform: translatey(-7px);
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  40% {
+    -webkit-transform: translatey(0);
+    -moz-transform: translatey(0);
+    -o-transform: translatey(0);
+    -ms-transform: translatey(0);
+    transform: translatey(0);
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  55% {
+    -webkit-transform: translatey(-3px);
+    -moz-transform: translatey(-3px);
+    -o-transform: translatey(-3px);
+    -ms-transform: translatey(-3px);
+    transform: translatey(-3px);
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  70% {
+    -webkit-transform: translatey(0);
+    -moz-transform: translatey(0);
+    -o-transform: translatey(0);
+    -ms-transform: translatey(0);
+    transform: translatey(0);
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  78% {
+    -webkit-transform: translatey(-1px);
+    -moz-transform: translatey(-1px);
+    -o-transform: translatey(-1px);
+    -ms-transform: translatey(-1px);
+    transform: translatey(-1px);
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  86% {
+    -webkit-transform: translatey(0);
+    -moz-transform: translatey(0);
+    -o-transform: translatey(0);
+    -ms-transform: translatey(0);
+    transform: translatey(0);
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 }
@@ -246,6 +355,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   20% {
@@ -257,6 +367,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   40% {
@@ -268,6 +379,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   55% {
@@ -279,6 +391,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   70% {
@@ -290,6 +403,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   78% {
@@ -301,6 +415,7 @@
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
     -o-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   86% {
@@ -312,6 +427,7 @@
     -webkit-animation-timing-function: ease-out;
     -moz-animation-timing-function: ease-out;
     -o-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
 }
@@ -319,6 +435,7 @@
   -webkit-animation: bounce 0.75s;
   -moz-animation: bounce 0.75s;
   -o-animation: bounce 0.75s;
+  -ms-animation: bounce 0.75s;
   animation: bounce 0.75s;
 }
 .badge-ui-widget {
@@ -351,7 +468,6 @@
 .badge-ui-widget .badge-ui-alert .badge-ui-img {
   width: 106px;
 }
-
 .badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
   display: none;
 }
@@ -401,4 +517,3 @@
 .badge-ui-unearned-badges li .badge-ui-desc {
   display: none;
 }
-/* END EXTREMELY TEMPORARY STYLES */
