@@ -91,6 +91,33 @@ defineTests([
     FakeServer.flushResponses();
     equal($('.badge-ui-unread', div).text(), '1');
   });
+
+  test("has-unread class is toggled", function() {
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(badger);
+    FakeServer.flushResponses();
+    ok(!$('.badge-ui-icon').hasClass('has-unread'));
+    badger.credit('LOGGED_IN');
+    FakeServer.flushResponses();
+    ok($('.badge-ui-icon').hasClass('has-unread'));
+    badger.markAllBadgesAsRead();
+    FakeServer.flushResponses();
+    ok(!$('.badge-ui-icon').hasClass('has-unread'));
+  });
+
+  test("icon element gets forced animation restart", function() {
+    var ui = BadgeUI(wmnav);
+    ui.setBadger(badger);
+    FakeServer.flushResponses();
+    var iconBefore = $('.badge-ui-icon');
+    badger.credit('LOGGED_IN');
+    FakeServer.flushResponses();
+    var iconAfter = $('.badge-ui-icon');
+    equal(iconBefore.html(), iconAfter.html(),
+      "html is identical");
+    notStrictEqual(iconBefore[0], iconAfter[0],
+      "DOM nodes are different");
+  });
   
   test("can set self.badger to null", function() {
     var ui = BadgeUI(wmnav);
