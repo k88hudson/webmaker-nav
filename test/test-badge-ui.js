@@ -115,7 +115,7 @@ defineTests([
     var iconAfter = $('.badge-ui-icon');
     equal(iconBefore.html(), iconAfter.html(),
       "html is identical");
-    notStrictEqual(iconBefore[0], iconAfter[0],
+    ok(iconBefore[0] !== iconAfter[0],
       "DOM nodes are different");
   });
   
