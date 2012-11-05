@@ -73,6 +73,11 @@ define([
           var unread = badger.unreadBadgeCount;
           $('.badge-ui-unread', widget).toggle(unread > 0)
             .text(unread.toString());
+          $('.badge-ui-icon', widget).toggleClass('has-unread', unread > 0);
+          var icon = $('.badge-ui-icon');
+          var newOne = icon.clone(true);
+          icon.replaceWith(newOne); /* this "restarts" CSS animations on
+            .badge-ui-icon or its children */
         });
         badger.on("change:availableBadges", refreshBadgeList);
         badger.on("change:earnedBadges", refreshBadgeList);

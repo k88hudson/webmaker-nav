@@ -65,6 +65,8 @@ pre-populating the container with custom content, e.g.:
   </div>
 ```
 
+A small library of badge notification animations are included under `css/notify/`. To use a different animation, import the desired file in `badge-ui.less` and recompile the CSS. This way unused animation CSS won't clutter the production files.
+
 For a full example, see `example/index.html`.
 
   [jquery]: http://jquery.com/

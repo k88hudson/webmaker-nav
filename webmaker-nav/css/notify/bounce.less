@@ -1,0 +1,35 @@
+@import "../mixins";
+
+.keyframes() {
+  0%   { .transform(translateY(0));
+         .timing-function(ease-out);
+       }
+  20%  { .transform(translateY(-7px));
+         .timing-function(ease-in);
+       }
+  40%  { .transform(translateY(0));
+         .timing-function(ease-out);
+       }
+  55%  { .transform(translateY(-3px));
+         .timing-function(ease-in);
+       }
+  70%  { .transform(translateY(0));
+         .timing-function(ease-out);
+       }
+  78%  { .transform(translateY(-1px));
+         .timing-function(ease-in);
+       }
+  86%  { .transform(translateY(0));
+         .timing-function(ease-out);
+       }
+}
+
+@-webkit-keyframes bounce {.keyframes;}
+@-moz-keyframes bounce {.keyframes;}
+@-o-keyframes bounce {.keyframes;}
+@-ms-keyframes bounce {.keyframes;}
+@keyframes bounce {.keyframes;}
+
+.has-unread .badge-ui-icon-img {
+  .animation(bounce 0.75s);
+}
