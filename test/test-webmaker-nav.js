@@ -94,6 +94,26 @@ defineTests([
           "login btn is visible again after logout");
   });
 
+  test("showLoginError() works", function() {
+    var webmakerNav = new WebmakerNav({
+      container: container.show(),
+      loginBtnCallback: function() {},
+      logoutBtnCallback: function() {}
+    });
+    var timeouts = [];
+    webmakerNav.showLoginError({
+      setTimeout: function fakeSetTimeout(fn, ms) {
+        timeouts.push({fn: fn, ms: ms});
+      },
+      duration: 5000
+    });
+    equal($(".wm-login-error-tooltip:visible", container).length, 1);
+    equal(timeouts.length, 1);
+    equal(timeouts[0].ms, 5000);
+    timeouts[0].fn();
+    equal($(".wm-login-error-tooltip", container).length, 0);
+  });
+  
   test("logging out hides user menu", function() {
     var webmakerNav = new WebmakerNav({
       container: container.show(),

@@ -1,10 +1,16 @@
 "use strict";
 
-define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
-  function( $, ModeBuster, BASE_LAYOUT ) {
+define( [ 
+  "jquery",
+  "./mode-buster",
+  "text!./templates/webmaker-nav.html",
+  "text!./templates/login-error.html"
+], function( $, ModeBuster, BASE_LAYOUT, LOGIN_ERROR_LAYOUT ) {
 
       // Added to elements in primary nav when they are active
-  var BTN_ACTIVE_CLASS = "webmaker-btn-active";
+  var BTN_ACTIVE_CLASS = "webmaker-btn-active",
+      // Default ms to display login errors for
+      LOGIN_ERROR_DURATION = 5000;
 
   function setupTabs( root, tabContainer ) {
         // Added to tab when it's open
@@ -94,6 +100,19 @@ define( [ "jquery", "./mode-buster", "text!./templates/webmaker-nav.html" ],
         applyCustomizations;
 
     this.container = root;
+    this.showLoginError = function(options) {
+      options = options || {};
+      var duration = options.duration || LOGIN_ERROR_DURATION;
+      var setTimeout = options.setTimeout || window.setTimeout;
+      var loginBtnContainer = loginBtn.parent();
+      var tooltips = $( ".tooltip", loginBtnContainer )
+        .css( "display", "none" );
+      var error = $( LOGIN_ERROR_LAYOUT ).appendTo( loginBtnContainer );
+      setTimeout(function() {
+        error.remove();
+        tooltips.css( "display", "" );
+      }, duration);
+    };
     this.views = {
       login: function( context ) {
         root.addClass( "logged-in" );
