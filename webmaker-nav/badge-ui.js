@@ -121,7 +121,7 @@ define([
       Object.keys(self.badger.earnedBadges).forEach(function(shortname) {
         assertions.push(self.badger.earnedBadges[shortname].assertionUrl);
       });
-      window.OpenBadges.issue(assertions, function() {});
+      window.OpenBadges.issue_no_modal(assertions);
     });
 
     return self;

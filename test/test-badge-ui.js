@@ -192,14 +192,15 @@ defineTests([
   test("clicking on + Backpack button invokes issuer API", function() {
     var ui = BadgeUI(wmnav);
 
-    expect(4);
+    expect(3);
     window.OpenBadges = {
-      issue: function(assertions, callback) {
+      issue_no_modal: function(assertions) {
         deepEqual(assertions, [
           "http://fake-clopenbadger/foo@bar.org/FIRST_LOGIN"
         ], "assertions passed to OpenBadges.issue() are correct");
-        callback();
-        ok(true, "callback is a function and doesn't throw");
+      },
+      issue: function(assertions, callback) {
+        ok(false, 'should use modaless');
       }
     };
     ui.setBadger(badger);
