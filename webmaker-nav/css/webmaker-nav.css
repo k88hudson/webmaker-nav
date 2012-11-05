@@ -229,22 +229,26 @@
 .wm-login-btn:hover {
   background: #606363;
 }
-.tooltip.wm-join-tooltip {
+.tooltip.wm-join-tooltip,
+.tooltip.wm-login-error-tooltip {
   pointer-events: auto;
   top: 100%;
   margin-top: 15px;
   width: 220px;
   margin-left: -110px;
 }
-.tooltip.wm-join-tooltip h3 {
+.tooltip.wm-join-tooltip h3,
+.tooltip.wm-login-error-tooltip h3 {
   margin: 0;
   font-size: 1.3em;
   line-height: 1.3;
 }
-.tooltip.wm-join-tooltip img {
+.tooltip.wm-join-tooltip img,
+.tooltip.wm-login-error-tooltip img {
   width: 40px;
 }
-.tooltip.wm-join-tooltip p {
+.tooltip.wm-join-tooltip p,
+.tooltip.wm-login-error-tooltip p {
   text-align: left;
 }
 .user-info > .notification-badge > a {

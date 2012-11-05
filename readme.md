@@ -37,6 +37,15 @@ Whenever the user logs in, you'll want to call:
 webmakerNav.views.login({username: "foo@bar.org"});
 ```
 
+If an error occurs during login, call:
+
+```javascript
+webmakerNav.showLoginError({duration: 4000});
+```
+
+The login error message will display under the login button for the given
+number of milliseconds.
+
 When the user logs out, just call:
 
 ```javascript
