@@ -6,6 +6,7 @@ BADGE_CSS = ./webmaker-nav/css/badge-ui.css
 BADGE_LESS = ./webmaker-nav/css/badge-ui.less
 
 less:
+	@npm install
 	@echo "Compiling LESS: ${LESS}"
 	@${LESSC} ${LESS} > ${CSS}
 	@echo "Compiling LESS: ${BADGE_LESS}"
