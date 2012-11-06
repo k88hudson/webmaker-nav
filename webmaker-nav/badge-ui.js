@@ -75,6 +75,7 @@ define([
         });
         badger.on("error", function() {
           $(widget).addClass('badge-ui-error');
+          $('.badge-ui-unread', widget).text('✕');
         });
         badger.on("change:unreadBadgeCount", function() {
           var unread = badger.unreadBadgeCount;
