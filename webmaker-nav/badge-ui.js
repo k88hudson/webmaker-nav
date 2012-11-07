@@ -69,6 +69,14 @@ define([
         if (!badger)
           return;
         
+        $(widget).removeClass('badge-ui-ready badge-ui-error');
+        badger.on("ready", function() {
+          $(widget).addClass('badge-ui-ready');
+        });
+        badger.on("error", function() {
+          $(widget).addClass('badge-ui-error');
+          $('.badge-ui-unread', widget).text('✕');
+        });
         badger.on("change:unreadBadgeCount", function() {
           var unread = badger.unreadBadgeCount;
           $('.badge-ui-unread', widget).toggle(unread > 0)

@@ -10,21 +10,33 @@
         <div class="badge-ui-title webmaker-h3">Webmaker Badges</div>
       </div>
       <div class="tooltip-big-inner">
-        <div class="badge-ui-earned-badges">
-          <div class="wm-unit badge-ui-push-to-backpack">
-            <button class="wm-unit-side-r wm-button wm-button-blue">+ Backpack</button>
-            <div>
-              Congrats! Send your badges to your backpack to share
-              with the world.
-            </div>
-          </div>
-          <div class="webmaker-h4">Earned Badges</div>
-          <ul></ul>
+        <div class="badge-ui-initializing">
+          <p>Communicating with badge server.</p>
+          <div class="badge-ui-loader"></div>
         </div>
-        <div class="badge-ui-unearned-badges">
-          <div class="webmaker-h4">Available Badges</div>
-          <ul></ul>
-        </div><!--.badge-ui-unearned-badges-->
+        <div class="badge-ui-error-message">
+          <p>
+            There has been an error communicating with the
+            badge server. Please refresh the page to try again.
+          </p>
+        </div>
+        <div class="badge-ui-ready-content">
+          <div class="badge-ui-earned-badges">
+            <div class="wm-unit badge-ui-push-to-backpack">
+              <button class="wm-unit-side-r wm-button wm-button-blue">+ Backpack</button>
+              <div>
+                Congrats! Send your badges to your backpack to share
+                with the world.
+              </div>
+            </div>
+            <div class="webmaker-h4">Earned Badges</div>
+            <ul></ul>
+          </div>
+          <div class="badge-ui-unearned-badges">
+            <div class="webmaker-h4">Available Badges</div>
+            <ul></ul>
+          </div><!--.badge-ui-unearned-badges-->
+        </div>
       </div>
     </div><!--.badge-ui-detail-->
   </div>
