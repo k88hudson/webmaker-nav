@@ -213,4 +213,30 @@ defineTests([
     equal($('.tooltip:visible', div).length, 0,
          "badge popover hides after clicking + Backpack button");
   });
+
+  asyncTest("badge-ui-ready class on widget when badger ready", function(){
+    var ui = BadgeUI(wmnav);
+    ok(!$('.badge-ui-widget').hasClass('badge-ui-ready'));
+    ui.setBadger(badger);
+    badger.on("ready", function(){
+      ok($('.badge-ui-widget').hasClass('badge-ui-ready'));
+      start();
+    });
+  });
+
+  asyncTest("badge-ui-error class on widget when badger errors", function(){
+    FakeServer.modifyQueuedResponses(function(info) {
+      if (info.path == '/v1/badges') {
+        info.response.status = 500;
+        info.response.statusText = "Internal Server Error";
+      }
+    });
+    var ui = BadgeUI(wmnav);
+    ok(!$('.badge-ui-widget').hasClass('badge-ui-error'));
+    ui.setBadger(badger);
+    badger.on("error", function(){
+      ok($('.badge-ui-widget').hasClass('badge-ui-error'));
+      start();
+    });
+  });
 });
