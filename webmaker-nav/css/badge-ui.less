@@ -11,16 +11,21 @@
 }
 
 .badge-ui-icon {
-  width: 16px;
-  height: 16px;
+  width: 21px;
+  height: 22px;
   cursor: pointer;
+  text-align: center;
 }
 
 .badge-ui-icon-img {
-  width: 16px;
-  height: 16px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: -1px;
   background-image: url(../img/badge.png);
-  background-size: 16px 16px;
+  .has-unread & {
+    background-image: url(../img/badge-unread.png);
+  }
 }
 
 .badge-ui-widget ul {
@@ -48,13 +53,10 @@
 .badge-ui-unread {
   font-size: 9px;
   line-height: 9px;
-  background: green;
   border-radius: 4px;
-  padding: 1px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  position: relative;
   display: inline-block;
+  background: #3FB58E;
 }
 
 .badge-ui-widget ul li {
