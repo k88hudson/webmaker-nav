@@ -23,8 +23,12 @@
   height: 100%;
   margin-top: -1px;
   background-image: url(../img/badge.png);
+  background-position: 0 0;
   .has-unread & {
     background-image: url(../img/badge-unread.png);
+  }
+  &:hover {
+    background-position: -21px 0;
   }
 }
 
@@ -56,7 +60,8 @@
   border-radius: 4px;
   position: relative;
   display: inline-block;
-  background: #3FB58E;
+  color: #C5AC50;
+  background: #FCF5B9;
 }
 
 .badge-ui-widget ul li {
