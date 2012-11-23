@@ -32,7 +32,7 @@ define([
       .prependTo($(webmakerNav.container).find("ul.user-info"))
       .find(".badge-ui-widget");
     var alertContainer = $(options.alertContainer || widget);
-    var alertSlideSpeed = options.alertSlideSpeed || 400;
+    var alertSlideSpeed = options.alertSlideSpeed || 350;
     var alertDisplayTime = options.alertDisplayTime || 3200;
     var backpackPanel = widget.find(".badge-ui-push-to-backpack");
     var modeBuster = ModeBuster({
