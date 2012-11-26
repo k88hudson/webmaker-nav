@@ -5,8 +5,9 @@ define([
   "./mode-buster",
   "text!./templates/badge-ui-widget.html",
   "text!./templates/badge-ui-list-item.html",
-  "text!./templates/badge-ui-alert.html"
-], function($, ModeBuster, WIDGET_HTML, LI_HTML, ALERT_HTML) {
+  "text!./templates/badge-ui-alert.html",
+  "text!./css/badge-ui.css"
+], function($, ModeBuster, WIDGET_HTML, LI_HTML, ALERT_HTML, BADGE_CSS) {
   function getEarnedBadges(badger) {
     return badger.getBadges().filter(function(badge) {
       return badge.isEarned;
@@ -105,6 +106,16 @@ define([
         });
       }
     };
+
+    function appendStyles() {
+      var styleTag = document.createElement( "style" ),
+          styles = document.createTextNode( BADGE_CSS );
+
+      styleTag.appendChild( styles );
+      document.head.appendChild( styleTag );
+    }
+
+    appendStyles();
 
     widget.click(function(event) {
       if ($(event.target).closest(".tooltip-big").length)

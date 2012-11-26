@@ -5,8 +5,9 @@ define( [
   "./mode-buster",
   "text!./templates/webmaker-nav.html",
   "text!./templates/login-error.html",
-  "text!./css/webmaker-nav.css"
-], function( $, ModeBuster, BASE_LAYOUT, LOGIN_ERROR_LAYOUT, BASE_CSS ) {
+  "text!./css/webmaker-nav.css",
+  "text!./css/badge-ui.css"
+], function( $, ModeBuster, BASE_LAYOUT, LOGIN_ERROR_LAYOUT, NAVBAR_CSS ) {
 
       // Added to elements in primary nav when they are active
   var BTN_ACTIVE_CLASS = "webmaker-btn-active",
@@ -127,7 +128,7 @@ define( [
 
     function appendStyles() {
       var styleTag = document.createElement( "style" ),
-          styles = document.createTextNode( BASE_CSS );
+          styles = document.createTextNode( NAVBAR_CSS );
 
       styleTag.appendChild( styles );
       document.head.appendChild( styleTag );
