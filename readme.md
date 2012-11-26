@@ -81,3 +81,11 @@ For a full example, see `example/index.html`.
   [jquery]: http://jquery.com/
   [requirejs]: http://requirejs.org/
   [packages]: http://requirejs.org/docs/api.html#packages
+
+To run the server you will need node.js. Enter the following commands:
+```
+npm install
+node server.js
+```
+
+Now your server will be running on localhost:8020
