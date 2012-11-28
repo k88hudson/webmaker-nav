@@ -74,10 +74,18 @@ pre-populating the container with custom content, e.g.:
   </div>
 ```
 
-A small library of badge notification animations are included under `css/notify/`. To use a different animation, import the desired file in `badge-ui.less` and recompile the CSS. This way unused animation CSS won't clutter the production files.
+For an example of a basic universal nav embedding, see `example/index.html`.
 
-For a full example, see `example/index.html`.
+### Badges Integration
+
+The universal nav may optionally be integrated with [Clopenbadger][]
+to provide a badge widget next to the login button that can be used to
+notify users of badges they receive, see what badges they have earned,
+and so forth. See `example/with-badge-ui.html` for example code.
+
+A small library of badge notification animations are included under `css/notify/`. To use a different animation, import the desired file in `badge-ui.less` and recompile the CSS. This way unused animation CSS won't clutter the production files.
 
   [jquery]: http://jquery.com/
   [requirejs]: http://requirejs.org/
   [packages]: http://requirejs.org/docs/api.html#packages
+  [Clopenbadger]: https://github.com/toolness/clopenbadger-consumer
