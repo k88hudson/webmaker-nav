@@ -10,15 +10,13 @@
   <link rel="stylesheet" href="//www.mozilla.org/tabzilla/media/css/tabzilla.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="../webmaker-nav/css/webmaker-nav.css">
+  <!-- We need the Badge UI CSS. -->
   <link rel="stylesheet" href="../webmaker-nav/css/badge-ui.css">
 </head>
 <body>
   <header>
     <a href="http://www.mozilla.org/" id="tabzilla">mozilla</a>
-    <!-- Begin webmaker nav -->
-    <div id="webmaker">
-    </div>
-    <!-- / webmaker nav -->
+    <div id="webmaker"></div>
     <div class="main-header">
       <span class="logo"></span>
       <span class="breadcrumbs"></span>
@@ -55,12 +53,20 @@
   require([
     "jquery",
     "webmaker-nav",
+    // Import the Badge UI module.
     "webmaker-nav/badge-ui",
+    // The Badge UI requires a Clopenbadger client; see
+    // https://github.com/toolness/clopenbadger-consumer.
     "clopenbadger/clopenbadger",
+    // We'll use a fake Clopenbadger server instead of a real one,
+    // which allows us to easily test out our Badge UI without
+    // having to worry about setting up and configuring a real server.
     "clopenbadger/test/fake-clopenbadger-server"
   ], function( $, Webmaker, BadgeUI, Clopenbadger, FakeServer ) {
     var fakeServerURL = "http://fake-clopenbadger";
     
+    // Set up our fake Clopenbadger server with some example badge
+    // definitions.
     FakeServer.setup({
       urlPrefix: fakeServerURL,
       availableBadges: {
@@ -87,6 +93,9 @@
     var webmakerNav = new Webmaker({
       container: document.querySelector( "#webmaker" ),
       loginBtnCallback: function() {
+        // Now that the user is logged in, create a Clopenbadger
+        // instance that allows us to access the user's information on
+        // a (fake) Clopebadger server and credit behaviors to them.
         badger = Clopenbadger({
           server: fakeServerURL,
           token: "fake token",
@@ -100,19 +109,27 @@
             }
           });
         webmakerNav.views.login({username: "testuser@mozilla.org"});
+        
+        // Give the Clopenbadger instance to our Badge UI, which will
+        // make the badge widget appear on the universal nav.
         badgeUI.setBadger(badger);
         badger.credit("LOGGED_IN");
       },
       logoutBtnCallback: function() {
+        // Tell the Badge UI that we no longer have a Clopenbadger
+        // instance, which makes the badge widget disappear from the
+        // universal nav.
         badger = null;
-        webmakerNav.views.logout();
         badgeUI.setBadger(badger);
+        webmakerNav.views.logout();
       },
       feedbackCallback: function() {
         if (badger) badger.credit("GAVE_FEEDBACK");
         console.log( "do feedback stuff" );
       }
     });
+    
+    // The Badge UI assumes the user is logged out at initialization time.
     var badgeUI = new BadgeUI(webmakerNav);
 
     $("#response-time").bind("change keyup", function() {
