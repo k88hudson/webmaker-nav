@@ -94,6 +94,12 @@
 .webmaker-nav-container a:hover {
   color: #3fb58e;
 }
+.webmaker-nav-container .h3 {
+  color: #FFF;
+  margin: 0;
+  font-weight: 700;
+  font-size: 19px;
+}
 .webmaker-nav-top {
   background: #3a3c3c;
   height: 29px;
@@ -108,6 +114,9 @@
   color: #FFF;
 }
 .webmaker-nav > li {
+  padding: 0;
+  margin: 0;
+  height: 100%;
   float: left;
 }
 .webmaker-nav > li > a,
@@ -153,10 +162,12 @@
 */
 .primary {
   float: left;
+  height: 29px;
 }
 .primary > li {
   border-right: 1px solid #474949;
   border-left: 1px solid #2d2f2f;
+  margin-left: 0;
 }
 .webmaker-expanded .primary > li {
   border-color: transparent;
@@ -236,6 +247,7 @@
   margin-top: 15px;
   width: 220px;
   margin-left: -110px;
+  z-index: 100;
 }
 .tooltip.wm-join-tooltip h3,
 .tooltip.wm-login-error-tooltip h3 {
@@ -328,6 +340,10 @@
 }
 .tab-webmaker .secondary-info p {
   margin: 0;
+}
+.tab-webmaker .secondary-info .info {
+  margin: 0;
+  font-weight: 400;
 }
 .tab-webmaker .webmaker-logo {
   float: left;
