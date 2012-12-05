@@ -2,7 +2,7 @@
 @blue: #319EF0;
 @green: #D83920;
 
-.wm-button {
+.wm-nav-button {
   display: inline-block;
   padding: 0 12px;
   white-space: nowrap;
@@ -27,7 +27,7 @@
       inset 0  0 0 1px darken(@lightgrey, 25%);
   }
 
-  &.wm-button-blue {
+  &.wm-nav-button-blue {
     .gradient("vertical", lighten(@blue, 10%), @blue);
     border-color: darken(@blue, 4%);
     color: #FFF;
@@ -38,7 +38,7 @@
     }
   }
 
-  &.wm-button-green {
+  &.wm-nav-button-green {
     background: @green;
     border-color: darken(@green, 10%);
     box-shadow: 0 5px 3px -4px fade(black, 20%);

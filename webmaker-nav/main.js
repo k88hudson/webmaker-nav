@@ -8,19 +8,19 @@ define( [
 ], function( $, ModeBuster, BASE_LAYOUT, LOGIN_ERROR_LAYOUT ) {
 
       // Added to elements in primary nav when they are active
-  var BTN_ACTIVE_CLASS = "webmaker-btn-active",
+  var BTN_ACTIVE_CLASS = "wm-nav-btn-active",
       // Default ms to display login errors for
       LOGIN_ERROR_DURATION = 5000;
 
   function setupTabs( root, tabContainer ) {
         // Added to tab when it's open
-    var TAB_ACTIVE_CLASS = "webmaker-tab-active",
+    var TAB_ACTIVE_CLASS = "wm-nav-tab-active",
         // Added to body when secondary nav is expanded
-        EXPANDED_CLASS = "webmaker-expanded",
+        EXPANDED_CLASS = "wm-nav-expanded",
          // The class prefix for each individual tab
         TAB_PREFIX = "tab-";
 
-    var primary = $( ".primary", root ),
+    var primary = $( ".wm-nav-primary", root ),
         modeBuster = ModeBuster({
           container: primary.add( tabContainer ),
           oncancel: function() {
@@ -61,7 +61,7 @@ define( [
   
   function UserMenuUI( container ) {
     var self = {},
-        usernameInner = $( ".user-name-container", container ),
+        usernameInner = $( ".wm-nav-user-name-container", container ),
         userMenu = $( ".tooltip-user", container ),
         modeBuster = ModeBuster({
           container: container,
@@ -88,12 +88,12 @@ define( [
     var customizations = $( "[data-webmaker-nav-role]", options.container )
           .remove(),
         root = $( options.container ).html( BASE_LAYOUT )
-          .find( ".webmaker-nav-container" ),
-        feedbackBtn = $( ".webmaker-feedback-btn", root ),
-        loginBtn = $( ".wm-login-btn", root ),
-        logoutBtn = $( ".logout-btn", root ),
-        tabContainer = $( ".webmaker-tabs", root ),
-        userMenuUI = UserMenuUI( $( ".user-name", root ) ),
+          .find( ".wm-nav-container" ),
+        feedbackBtn = $( ".wm-nav-feedback-btn", root ),
+        loginBtn = $( ".wm-nav-login-btn", root ),
+        logoutBtn = $( ".wm-nav-logout-btn", root ),
+        tabContainer = $( ".wm-nav-tabs", root ),
+        userMenuUI = UserMenuUI( $( ".wm-nav-user-name", root ) ),
         feedbackCallback,
         loginBtnCallback,
         logoutBtnCallback,
@@ -105,7 +105,7 @@ define( [
       var duration = options.duration || LOGIN_ERROR_DURATION;
       var setTimeout = options.setTimeout || window.setTimeout;
       var loginBtnContainer = loginBtn.parent();
-      var tooltips = $( ".tooltip", loginBtnContainer )
+      var tooltips = $( ".wm-nav-tooltip", loginBtnContainer )
         .css( "display", "none" );
       var error = $( LOGIN_ERROR_LAYOUT ).appendTo( loginBtnContainer );
       setTimeout(function() {
@@ -131,10 +131,10 @@ define( [
     applyCustomizations = function() {
       var customizers = {
         'join-tooltip': function() {
-          $('.wm-join-tooltip', root).empty().append(this);
+          $('.wm-nav-join-tooltip', root).empty().append(this);
         },
         'webmaker-info': function() {
-          $('.webmaker-tab .secondary-info', tabContainer)
+          $('.wm-nav-tab .wm-nav-secondary-info', tabContainer)
             .empty().append(this);
         },
         'user-options': function() {

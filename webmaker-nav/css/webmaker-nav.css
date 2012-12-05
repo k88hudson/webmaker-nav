@@ -2,7 +2,7 @@
 * Webmaker nav
 */
 /* Note -- this file is compiled from webmakernav.less */
-.wm-button {
+.wm-nav-button {
   display: inline-block;
   padding: 0 12px;
   white-space: nowrap;
@@ -20,11 +20,11 @@
   border: 1px solid #959a97;
   box-shadow: 0 5px 3px -4px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
-.wm-button:hover {
+.wm-nav-button:hover {
   background: #F5F5F5;
   box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.4), inset 0 0 0 1px #959a97;
 }
-.wm-button.wm-button-blue {
+.wm-nav-button.wm-nav-button-blue {
   filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#68a2f1', endColorstr='#3985ed', GradientType=0);
   background: -webkit-gradient(linear, top, bottom, color-stop(0%, #68a2f1), color-stop(100%, #3985ed));
   background: -webkit-linear-gradient(top, #68a2f1 0%, #3985ed 100%);
@@ -35,7 +35,7 @@
   border-color: #2679eb;
   color: #FFF;
 }
-.wm-button.wm-button-blue:hover {
+.wm-nav-button.wm-nav-button-blue:hover {
   filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#7fb0f3', endColorstr='#5093ef', GradientType=0);
   background: -webkit-gradient(linear, top, bottom, color-stop(0%, #7fb0f3), color-stop(100%, #5093ef));
   background: -webkit-linear-gradient(top, #7fb0f3 0%, #5093ef 100%);
@@ -46,13 +46,13 @@
   border-color: #2277eb;
   box-shadow: 0 4px 7px -4px rgba(0, 0, 0, 0.6);
 }
-.wm-button.wm-button-green {
+.wm-nav-button.wm-nav-button-green {
   background: #3fb58e;
   border-color: #328f70;
   box-shadow: 0 5px 3px -4px rgba(0, 0, 0, 0.2);
   color: #FFF;
 }
-.wm-button.wm-button-green:hover {
+.wm-nav-button.wm-nav-button-green:hover {
   background: #49c098;
   border-color: #328f70;
   box-shadow: 0 4px 7px -4px rgba(0, 0, 0, 0.6);
@@ -83,22 +83,22 @@
   font-weight: normal;
   font-style: normal;
 }
-.webmaker-nav-container {
+.wm-nav-container {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 12px;
   border-bottom: 1px solid #2d2f2f;
 }
-.webmaker-nav-container a {
+.wm-nav-container a {
   color: #FFF;
 }
-.webmaker-nav-container a:hover {
+.wm-nav-container a:hover {
   color: #3fb58e;
 }
-.webmaker-nav-top {
+.wm-nav-top {
   background: #3a3c3c;
   height: 29px;
 }
-.webmaker-nav {
+.wm-nav {
   height: 29px;
   padding: 0;
   margin: 0;
@@ -107,11 +107,11 @@
   font-size: 1em;
   color: #FFF;
 }
-.webmaker-nav > li {
+.wm-nav > li {
   float: left;
 }
-.webmaker-nav > li > a,
-.webmaker-nav > li > .link {
+.wm-nav > li > a,
+.wm-nav > li > .wm-nav-link {
   position: relative;
   display: block;
   height: 100%;
@@ -132,14 +132,14 @@
   transition: top 0.1s ease;
   color: rgba(255, 255, 255, 0.5);
 }
-.webmaker-nav > li > a:hover,
-.webmaker-nav > li > .link:hover,
-.webmaker-nav > li > a.on,
-.webmaker-nav > li > .link.on {
+.wm-nav > li > a:hover,
+.wm-nav > li > .wm-nav-link:hover,
+.wm-nav > li > a.on,
+.wm-nav > li > .wm-nav-link.on {
   color: #FFF;
 }
-.webmaker-nav > li > a.webmaker-btn-active,
-.webmaker-nav > li > .link.webmaker-btn-active {
+.wm-nav > li > a.wm-nav-btn-active,
+.wm-nav > li > .wm-nav-link.wm-nav-btn-active {
   color: #FFF;
   border-bottom-width: 1px;
   border-top: 1px solid #494c4c;
@@ -151,40 +151,40 @@
 /*********************************************************
 * Primary menu
 */
-.primary {
+.wm-nav-primary {
   float: left;
 }
-.primary > li {
+.wm-nav-primary > li {
   border-right: 1px solid #474949;
   border-left: 1px solid #2d2f2f;
 }
-.webmaker-expanded .primary > li {
+.wm-nav-expanded .wm-nav-primary > li {
   border-color: transparent;
 }
-.primary > li:last-child {
+.wm-nav-primary > li:last-child {
   border-right-color: transparent;
 }
-.primary > li a:hover {
+.wm-nav-primary > li a:hover {
   background: #3f4141;
 }
 /*********************************************************
 * User/Login Styles
 */
-.user {
+.wm-nav-user {
   min-width: 150px;
 }
-.user-info {
+.wm-nav-user-info {
   float: right;
   margin-right: 150px;
 }
-.user-info li {
+.wm-nav-user-info li {
   border-right: none;
 }
-.wm-login-container {
+.wm-nav-login-container {
   cursor: pointer;
   position: relative;
 }
-.wm-login-btn {
+.wm-nav-login-btn {
   color: #FFF;
   line-height: 22px;
   top: 3px;
@@ -198,7 +198,7 @@
   margin-right: 5px;
   overflow: hidden;
 }
-.wm-login-btn:after {
+.wm-nav-login-btn:after {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAA4klEQVR42o2RWaqEMBRE3YaCiDjPwQGcd9CrysLv4wTyoLFD90dxqbp1EgdPRB7Kskznea6Zn/aPoKoqUUrJOI5m4l2QBfSyLHKep1zXZSae3An1fS/7vst931bGkzuhaZrsLVbGkzuheZ7lOI6HyJ2QUkqv6yrbtv0LT+6E7G0UrfBfP3lZlpoXH4ZBmHgn5Pv+KwxDfqp0XQdgJp6c/RsUBIGOokiSJDE/s21bACbe5Ozp0TdAHMdSFIXUdS1N01C2wpObPT36HifwCJzI0iX29Oh7XP0E3CB9L01TzM+i/wePv4ZE5RtAngAAAABJRU5ErkJggg==") 10px center no-repeat;
   content: "";
   display: block;
@@ -209,7 +209,7 @@
   top: 0;
   z-index: 10;
 }
-.wm-login-btn:before {
+.wm-nav-login-btn:before {
   content: "";
   display: block;
   width: 30px;
@@ -226,32 +226,32 @@
   transform: rotate(45deg);
   box-shadow: 1px 0 0 2px rgba(0, 0, 0, 0.05);
 }
-.wm-login-btn:hover {
+.wm-nav-login-btn:hover {
   background: #606363;
 }
-.tooltip.wm-join-tooltip,
-.tooltip.wm-login-error-tooltip {
+.wm-nav-tooltip.wm-nav-join-tooltip,
+.wm-nav-tooltip.wm-nav-login-error-tooltip {
   pointer-events: auto;
   top: 100%;
   margin-top: 15px;
   width: 220px;
   margin-left: -110px;
 }
-.tooltip.wm-join-tooltip h3,
-.tooltip.wm-login-error-tooltip h3 {
+.wm-nav-tooltip.wm-nav-join-tooltip h3,
+.wm-nav-tooltip.wm-nav-login-error-tooltip h3 {
   margin: 0;
   font-size: 1.3em;
   line-height: 1.3;
 }
-.tooltip.wm-join-tooltip img,
-.tooltip.wm-login-error-tooltip img {
+.wm-nav-tooltip.wm-nav-join-tooltip img,
+.wm-nav-tooltip.wm-nav-login-error-tooltip img {
   width: 40px;
 }
-.tooltip.wm-join-tooltip p,
-.tooltip.wm-login-error-tooltip p {
+.wm-nav-tooltip.wm-nav-join-tooltip p,
+.wm-nav-tooltip.wm-nav-login-error-tooltip p {
   text-align: left;
 }
-.user-info > .notification-badge > a {
+.wm-nav-user-info > .notification-badge > a {
   display: none;
   height: 15px;
   width: 15px;
@@ -265,29 +265,29 @@
   box-sizing: border-box;
   opacity: 0.7;
 }
-.user-info > .notification-badge > a:hover {
+.wm-nav-user-info > .notification-badge > a:hover {
   opacity: 1;
 }
-.webmaker-nav > .user {
+.wm-nav > .wm-nav-user {
   position: relative;
 }
-.webmaker-nav > .user > a {
+.wm-nav > .wm-nav-user > a {
   padding-left: 8px;
 }
 /*********************************************************
 * Tabs
 */
-.webmaker-tabs {
+.wm-nav-tabs {
   height: 0;
 }
-.webmaker-expanded .webmaker-tabs {
+.wm-nav-expanded .wm-nav-tabs {
   height: auto;
 }
-.webmaker-tabs,
-.webmaker-tab {
+.wm-nav-tabs,
+.wm-nav-tab {
   background: #3a3c3c;
 }
-.webmaker-tab {
+.wm-nav-tab {
   position: relative;
   width: 100%;
   color: #FFF;
@@ -300,24 +300,24 @@
   -ms-transition: height 0.1s ease;
   transition: height 0.1s ease;
 }
-.webmaker-tab li {
+.wm-nav-tab li {
   border-right: none;
   line-height: 50px;
 }
-.webmaker-tab li > a {
+.wm-nav-tab li > a {
   background: none;
   font-size: 1.25em;
 }
-.webmaker-tab.webmaker-tab-active {
+.wm-nav-tab.wm-nav-tab-active {
   height: 50px;
 }
-.tab-webmaker.webmaker-tab-active {
+.tab-webmaker.wm-nav-tab-active {
   height: 100px;
 }
-.tab-webmaker .tab-inner {
+.tab-webmaker .wm-nav-tab-inner {
   height: 100%;
 }
-.tab-webmaker .secondary-info {
+.tab-webmaker .wm-nav-secondary-info {
   float: left;
   width: 460px;
   padding: 20px;
@@ -326,10 +326,10 @@
   font-size: 1.15em;
   line-height: 1.3;
 }
-.tab-webmaker .secondary-info p {
+.tab-webmaker .wm-nav-secondary-info p {
   margin: 0;
 }
-.tab-webmaker .webmaker-logo {
+.tab-webmaker .wm-nav-logo {
   float: left;
   margin: 11px 0 0 15px;
   opacity: 1;
@@ -338,7 +338,7 @@
   height: 70px;
   background: url(../img/webmaker-logo.png ) no-repeat;
 }
-.tab-webmaker .webmaker-slogan {
+.tab-webmaker .wm-nav-slogan {
   width: 420px;
   padding: 20px;
   margin: 0;
@@ -354,28 +354,28 @@
 /*********************************************************
 * Blocks
 */
-.wm-unit:after {
+.wm-nav-unit:after {
   /* Clearfix */
 
   content: "";
   display: table;
   clear: both;
 }
-.wm-unit-side {
+.wm-nav-unit-side {
   float: left;
   margin-right: 10px;
 }
-.wm-unit-side-r {
+.wm-nav-unit-side-r {
   float: right;
   margin-left: 10px;
 }
-.wm-unit-body {
+.wm-nav-unit-body {
   display: table;
 }
 /*********************************************************
 * Tooltip
 */
-*:hover > .tooltip:not(.tooltip-no-hover) {
+*:hover > .wm-nav-tooltip:not(.tooltip-no-hover) {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.3s ease 0.5s;
@@ -384,7 +384,7 @@
   -ms-transition: opacity 0.3s ease 0.5s;
   transition: opacity 0.3s ease 0.5s;
 }
-.tooltip {
+.wm-nav-tooltip {
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -414,7 +414,7 @@
   -ms-transition: opacity 0.3s ease 0;
   transition: opacity 0.3s ease 0;
 }
-.tooltip.tooltip-on {
+.wm-nav-tooltip.tooltip-on {
   opacity: 1;
   visibility: visible;
   -webkit-transition: opacity 0.3s ease 0.5s;
@@ -423,15 +423,15 @@
   -ms-transition: opacity 0.3s ease 0.5s;
   transition: opacity 0.3s ease 0.5s;
 }
-.tooltip.tooltip-no-transition-on {
+.wm-nav-tooltip.tooltip-no-transition-on {
   opacity: 1;
   visibility: visible;
 }
-.tooltip.tooltip-error {
+.wm-nav-tooltip.tooltip-error {
   color: red;
 }
-.tooltip:after,
-.tooltip:before {
+.wm-nav-tooltip:after,
+.wm-nav-tooltip:before {
   content: "";
   position: absolute;
   top: -5px;
@@ -443,14 +443,14 @@
   border-right: 5px solid transparent;
   border-bottom: 5px solid #FFF;
 }
-.tooltip:after {
+.wm-nav-tooltip:after {
   z-index: 1000001;
 }
-.tooltip:before {
+.wm-nav-tooltip:before {
   top: -6px;
   border-bottom: 5px solid #CCC;
 }
-.tooltip.tooltip-user {
+.wm-nav-tooltip.tooltip-user {
   background: #3a3c3c;
   border: none;
   color: #FFF;
@@ -466,25 +466,25 @@
   pointer-events: auto;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 }
-.tooltip.tooltip-user:after,
-.tooltip.tooltip-user:before {
+.wm-nav-tooltip.tooltip-user:after,
+.wm-nav-tooltip.tooltip-user:before {
   display: none;
 }
-.tooltip.tooltip-user ul {
+.wm-nav-tooltip.tooltip-user ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.tooltip.tooltip-user ul > li {
+.wm-nav-tooltip.tooltip-user ul > li {
   padding: 10px;
   padding-left: 10px;
   border-bottom: 1px solid #535656;
   box-shadow: inset 0 -1px 0 0px rgba(0, 0, 0, 0.2);
 }
-.tooltip.tooltip-user ul > li:last-child {
+.wm-nav-tooltip.tooltip-user ul > li:last-child {
   border-bottom: none;
 }
-.tooltip.tooltip-user ul > li a {
+.wm-nav-tooltip.tooltip-user ul > li a {
   display: block;
   cursor: pointer;
   text-decoration: none;
@@ -492,7 +492,7 @@
 /*********************************************************
 * Tooltip big
 */
-.tooltip.tooltip-big {
+.wm-nav-tooltip.tooltip-big {
   width: 250px;
   left: 0;
   margin-top: 9px;
@@ -500,8 +500,8 @@
   text-align: left;
   padding: 0;
 }
-.tooltip.tooltip-big:after,
-.tooltip.tooltip-big:before {
+.wm-nav-tooltip.tooltip-big:after,
+.wm-nav-tooltip.tooltip-big:before {
   left: 33px;
 }
 .tooltip-big-heading {
@@ -514,7 +514,7 @@
   max-height: 200px;
   overflow-y: auto;
 }
-.tooltip.tooltip-big ul {
+.wm-nav-tooltip.tooltip-big ul {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -522,23 +522,23 @@
 /*********************************************************
 * Typography
 */
-.webmaker-txt-light {
+.wm-nav-txt-light {
   font-family: "Open Sans Light", "Open Sans", sans-serif;
 }
-.webmaker-h3,
-.webmaker-h4 {
+.wm-nav-h3,
+.wm-nav-h4 {
   margin: 1em 0 0.5em 0;
 }
-.webmaker-h3 {
+.wm-nav-h3 {
   font-size: 1.4em;
 }
-.webmaker-h4 {
+.wm-nav-h4 {
   font-size: 1.2em;
 }
 /* Login states */
-.webmaker-nav-container:not(.logged-in) .user {
+.wm-nav-container:not(.logged-in) .wm-nav-user {
   display: none;
 }
-.webmaker-nav-container.logged-in .wm-login-container {
+.wm-nav-container.logged-in .wm-nav-login-container {
   display: none;
 }
