@@ -13,16 +13,16 @@ defineTests([
     }
   });
   
-  var LOGIN_BTN = ".wm-login-btn",
-      LOGOUT_BTN = ".logout-btn",
-      FEEDBACK_BTN = ".webmaker-feedback-btn",
+  var LOGIN_BTN = ".wm-nav-login-btn",
+      LOGOUT_BTN = ".wm-nav-logout-btn",
+      FEEDBACK_BTN = ".wm-nav-feedback-btn",
       USER_MENU = ".tooltip-user";
   
   var container;
   
-  test("contains .webmaker-nav-container", function() {
+  test("contains .wm-nav-container", function() {
     var webmakerNav = new WebmakerNav({container: container});
-    equal(container.find(".webmaker-nav-container").length, 1);
+    equal(container.find(".wm-nav-container").length, 1);
   });
   
   test("has no login button if no cb given", function() {
@@ -87,7 +87,7 @@ defineTests([
     webmakerNav.views.login({username: "blegh"});
     equal(container.find(LOGIN_BTN + ":visible").length, 0,
           "login btn is not visible");
-    equal(container.find(".user-name-container").text(), "blegh",
+    equal(container.find(".wm-nav-user-name-container").text(), "blegh",
           "user menu contains username");
     webmakerNav.views.logout();
     equal(container.find(LOGIN_BTN + ":visible").length, 1,
@@ -107,11 +107,11 @@ defineTests([
       },
       duration: 5000
     });
-    equal($(".wm-login-error-tooltip:visible", container).length, 1);
+    equal($(".wm-nav-login-error-tooltip:visible", container).length, 1);
     equal(timeouts.length, 1);
     equal(timeouts[0].ms, 5000);
     timeouts[0].fn();
-    equal($(".wm-login-error-tooltip", container).length, 0);
+    equal($(".wm-nav-login-error-tooltip", container).length, 0);
   });
   
   test("logging out hides user menu", function() {
@@ -121,7 +121,7 @@ defineTests([
       logoutBtnCallback: function() {}
     });
     var userMenu = container.find(USER_MENU);
-    var usernameWidget = container.find(".user-name");
+    var usernameWidget = container.find(".wm-nav-user-name");
 
     webmakerNav.views.login({username: "blegh"});
     equal($(LOGOUT_BTN, container).css("visibility"), "hidden",
@@ -141,7 +141,7 @@ defineTests([
       logoutBtnCallback: function() {}
     });
     var userMenu = container.find(USER_MENU);
-    var usernameWidget = container.find(".user-name");
+    var usernameWidget = container.find(".wm-nav-user-name");
     
     webmakerNav.views.login({username: "blegh"});
     equal(userMenu.css("visibility"), "hidden",
@@ -156,7 +156,7 @@ defineTests([
   
   test("clicking on a tab shows its content, hides others", function() {
     function isTabActive(name) {
-      return $(".tab-" + name, container).hasClass("webmaker-tab-active");
+      return $(".tab-" + name, container).hasClass("wm-nav-tab-active");
     }
 
     var webmakerNav = new WebmakerNav({container: container.show()});
@@ -180,18 +180,18 @@ defineTests([
       loginBtnCallback: function() {},
       logoutBtnCallback: function() { logout = true; }
     });
-    equal($(".user-name ul").children().length, 3);
-    ok($(".user-name ul").children()[0] === firstEntry[0]);
-    ok($(".user-name ul").children()[1] === secondEntry[0]);
-    $(".user-name ul .logout-btn").click();
+    equal($(".wm-nav-user-name ul").children().length, 3);
+    ok($(".wm-nav-user-name ul").children()[0] === firstEntry[0]);
+    ok($(".wm-nav-user-name ul").children()[1] === secondEntry[0]);
+    $(".wm-nav-user-name ul .wm-nav-logout-btn").click();
     ok(logout);
   });
   
   test("customizable webmaker-info content works", function() {
     var info = $('<div data-webmaker-nav-role="webmaker-info">hi</div>');
     var webmakerNav = new WebmakerNav({container: container.append(info)});
-    equal($(".webmaker-tab .secondary-info").children().length, 1);
-    ok($(".webmaker-tab .secondary-info").children()[0] === info[0]);
+    equal($(".wm-nav-tab .wm-nav-secondary-info").children().length, 1);
+    ok($(".wm-nav-tab .wm-nav-secondary-info").children()[0] === info[0]);
     equal(info.text(), 'hi');
   });
   
@@ -202,8 +202,8 @@ defineTests([
       loginBtnCallback: function() {},
       logoutBtnCallback: function() {}
     });
-    equal($(".wm-join-tooltip").children().length, 1);
-    ok($(".wm-join-tooltip").children()[0] === info[0]);
+    equal($(".wm-nav-join-tooltip").children().length, 1);
+    ok($(".wm-nav-join-tooltip").children()[0] === info[0]);
     equal(info.text(), 'hi');
   });
 });

@@ -471,16 +471,45 @@
 .badge-ui-widget:not(.badge-ui-on) .badge-ui-detail {
   display: none;
 }
+.badge-ui-widget.badge-ui-ready .badge-ui-initializing,
+.badge-ui-widget.badge-ui-error .badge-ui-initializing {
+  display: none;
+}
+.badge-ui-initializing {
+  float: left;
+}
+.badge-ui-loader {
+  background: url('../img/ajax-loader.gif');
+  width: 43px;
+  height: 11px;
+  margin: 0 auto 10px auto;
+}
+.badge-ui-widget:not(.badge-ui-error) .badge-ui-error-message {
+  display: none;
+}
+.badge-ui-error-message {
+  color: #B94A48;
+}
+.badge-ui-widget:not(.badge-ui-ready) .badge-ui-ready-content {
+  display: none;
+}
 .badge-ui-unread {
   font-size: 9px;
   line-height: 9px;
-  background: green;
   border-radius: 4px;
   padding: 1px;
   position: absolute;
   bottom: 0;
   right: 0;
+  display: none;
+}
+.badge-ui-widget.badge-ui-ready .badge-ui-unread {
   display: inline-block;
+  background: green;
+}
+.badge-ui-widget.badge-ui-error .badge-ui-unread {
+  display: inline-block;
+  background: #B94A48;
 }
 .badge-ui-widget ul li {
   padding: 4px;
@@ -488,10 +517,10 @@
 .badge-ui-widget .badge-ui-backpack .badge-ui-bd {
   font-size: 10px;
 }
-.webmaker-nav-container:not(.logged-in) li.user-badges {
+.wm-nav-container:not(.logged-in) li.user-badges {
   display: none;
 }
-.badge-ui-widget .webmaker-h4 {
+.badge-ui-widget .wm-nav-h4 {
   color: #888;
   font-size: 1.1em;
   border-top: 1px dashed #CCC;
@@ -516,4 +545,7 @@
 .badge-ui-unearned-badges li .badge-ui-img img,
 .badge-ui-unearned-badges li .badge-ui-desc {
   display: none;
+}
+.badge-ui-unearned-badges li .badge-ui-name {
+  line-height: 64px;
 }

@@ -12,7 +12,7 @@ defineTests([
 
   module("badge-ui", {
     setup: function() {
-      div = $('<div><ul class="user-info"></ul></div>')
+      div = $('<div><ul class="wm-nav-user-info"></ul></div>')
         .appendTo(document.body);
       wmnav = {container: div};
       FakeServer.setup({
@@ -57,7 +57,7 @@ defineTests([
   
   test("inserts badge list item into ul.user-info", function() {
     var ui = BadgeUI(wmnav);
-    equal($('ul.user-info li.user-badges', div).length, 1);
+    equal($('ul.wm-nav-user-info li.user-badges', div).length, 1);
   });
   
   test("unearned badges are listed alphabetically", function() {
@@ -207,10 +207,10 @@ defineTests([
     badger.credit('LOGGED_IN');
     FakeServer.flushResponses();
     $('.badge-ui-widget', div).click();
-    equal($('.tooltip:visible', div).length, 1,
+    equal($('.wm-nav-tooltip:visible', div).length, 1,
           "badge popover is visible before clicking + Backpack button");
     $(".badge-ui-push-to-backpack button", div).click();
-    equal($('.tooltip:visible', div).length, 0,
+    equal($('.wm-nav-tooltip:visible', div).length, 0,
          "badge popover hides after clicking + Backpack button");
   });
 

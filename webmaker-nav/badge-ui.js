@@ -29,7 +29,7 @@ define([
     options = options || {};
     
     var widget = $(WIDGET_HTML)
-      .prependTo($(webmakerNav.container).find("ul.user-info"))
+      .prependTo($(webmakerNav.container).find("ul.wm-nav-user-info"))
       .find(".badge-ui-widget");
     var alertContainer = $(options.alertContainer || widget);
     var alertDisplayTime = options.alertDisplayTime || 2000;

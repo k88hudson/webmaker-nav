@@ -24,7 +24,7 @@
 //FONTS
 @fontsize: 12px;
 
-.webmaker-nav-container {
+.wm-nav-container {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: @fontsize;
   border-bottom: 1px solid darken( @darkgrey, 5% );
@@ -36,12 +36,12 @@
   }
 }
 
-.webmaker-nav-top {
+.wm-nav-top {
   background: @darkgrey;
   height: @webmakernavheight;
 }
 
-.webmaker-nav {
+.wm-nav {
   height: @webmakernavheight;
   padding: 0;
   margin: 0;
@@ -53,7 +53,7 @@
     float: left;
   }
   > li > a,
-  > li > .link {
+  > li > .wm-nav-link {
     @_padding: 15px; // Horizontal padding on each list item
 
     position: relative;
@@ -75,7 +75,7 @@
       color: #FFF;
     }
     // Active state
-    &.webmaker-btn-active {
+    &.wm-nav-btn-active {
       color: #FFF;
       border-bottom-width: 1px;
       border-top: 1px solid lighten( @darkgrey, 6% );
@@ -92,12 +92,12 @@
 * Primary menu
 */
 // This is the menu that always shows up, like "Projects", "Tools", ...
-.primary {
+.wm-nav-primary {
   float: left;
   > li {
     border-right: 1px solid lighten( @darkgrey, 5% );
     border-left: 1px solid darken( @darkgrey, 5% );
-    .webmaker-expanded & {
+    .wm-nav-expanded & {
       border-color: transparent;
     }
     &:last-child {
@@ -114,22 +114,22 @@
 /*********************************************************
 * User/Login Styles
 */
-.user {
+.wm-nav-user {
   min-width: 150px;
 }
 // This is the menu on the right with user info stuff
-.user-info {
+.wm-nav-user-info {
   float: right;
   margin-right: @tabzillaoffset;
   li {
     border-right: none;
   }
 }
-.wm-login-container {
+.wm-nav-login-container {
   cursor: pointer;
   position: relative;
 }
-.wm-login-btn {
+.wm-nav-login-btn {
   color: #FFF;
   line-height: 22px;
   top: 3px;
@@ -170,8 +170,8 @@
     background: lighten( @darkgrey, 15% );
   }
 }
-.tooltip.wm-join-tooltip,
-.tooltip.wm-login-error-tooltip {
+.wm-nav-tooltip.wm-nav-join-tooltip,
+.wm-nav-tooltip.wm-nav-login-error-tooltip {
   pointer-events: auto;
   top: 100%;
   margin-top: 15px;
@@ -190,7 +190,7 @@
   }
 }
 
-.user-info > .notification-badge > a {
+.wm-nav-user-info > .notification-badge > a {
   display: none;
   height: 15px;
   width: 15px;
@@ -205,7 +205,7 @@
   }
 }
 
-.webmaker-nav > .user {
+.wm-nav > .wm-nav-user {
   position: relative;
   > a {
     padding-left: 8px;
@@ -215,19 +215,19 @@
 /*********************************************************
 * Tabs
 */
-.webmaker-tabs {
+.wm-nav-tabs {
   height: 0;
-  .webmaker-expanded & {
+  .wm-nav-expanded & {
     height: auto;
   }
 }
-.webmaker-tabs,
-.webmaker-tab {
+.wm-nav-tabs,
+.wm-nav-tab {
   background: @darkgrey;
 }
 
 // This is the menu with subnavigation
-.webmaker-tab {
+.wm-nav-tab {
   position: relative;
   width: 100%;
   color: #FFF;
@@ -248,20 +248,20 @@
   .transition( height 0.1s ease );
 
   // Active state
-  &.webmaker-tab-active {
+  &.wm-nav-tab-active {
     height: @secondaryheight;
   }
 }
 
 // Specific style for first tab
 .tab-webmaker {
-   &.webmaker-tab-active {
+   &.wm-nav-tab-active {
       height: @secondaryheight + 50px;
    }
-   .tab-inner {
+   .wm-nav-tab-inner {
     height: 100%;
    }
-   .secondary-info {
+   .wm-nav-secondary-info {
       float: left;
       width: 460px;
       padding: 20px;
@@ -273,7 +273,7 @@
         margin: 0;
       }
    }
-  .webmaker-logo {
+  .wm-nav-logo {
     float: left;
     margin: 11px 0 0 15px;
     opacity: 1;
@@ -282,7 +282,7 @@
     height: 70px;
     background: url( ../img/webmaker-logo.png ) no-repeat;
   }
-  .webmaker-slogan {
+  .wm-nav-slogan {
     float: left;
     width: 420px;
     padding: 20px;
@@ -298,7 +298,7 @@
 /*********************************************************
 * Blocks
 */
-.wm-unit {
+.wm-nav-unit {
   .clearfix();
   &-side {
     float: left;
@@ -317,13 +317,13 @@
 * Tooltip
 */
 
-*:hover > .tooltip:not(.tooltip-no-hover) {
+*:hover > .wm-nav-tooltip:not(.tooltip-no-hover) {
   opacity: 1;
   visibility: visible;
   .transition( opacity 0.3s ease 0.5s );
 }
 
-.tooltip {
+.wm-nav-tooltip {
   @_tooltipWidth: 110px;
   &.tooltip-on {
     opacity: 1;
@@ -383,7 +383,7 @@
 }
 
 // The user menu
-.tooltip.tooltip-user {
+.wm-nav-tooltip.tooltip-user {
   background: @darkgrey;
   border: none;
   color: #FFF;
@@ -426,7 +426,7 @@
 /*********************************************************
 * Tooltip big
 */
-.tooltip.tooltip-big {
+.wm-nav-tooltip.tooltip-big {
   width: 250px;
   left: 0;
   margin-top: 9px;
@@ -434,8 +434,8 @@
   text-align: left;
   padding: 0;
 }
-.tooltip.tooltip-big:after,
-.tooltip.tooltip-big:before {
+.wm-nav-tooltip.tooltip-big:after,
+.wm-nav-tooltip.tooltip-big:before {
   left: 33px;
 }
 .tooltip-big-heading {
@@ -448,7 +448,7 @@
   max-height: 200px;
   overflow-y: auto;
 }
-.tooltip.tooltip-big ul {
+.wm-nav-tooltip.tooltip-big ul {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -458,18 +458,18 @@
 * Typography
 */
 
-.webmaker-txt-light {
+.wm-nav-txt-light {
   font-family: "Open Sans Light", "Open Sans", sans-serif;
 }
 
-.webmaker-h3,
-.webmaker-h4 {
+.wm-nav-h3,
+.wm-nav-h4 {
   margin: 1em 0 0.5em 0;
 }
-.webmaker-h3 {
+.wm-nav-h3 {
   font-size: 1.4em;
 }
-.webmaker-h4 {
+.wm-nav-h4 {
   font-size: 1.2em;
 }
 
@@ -477,10 +477,10 @@
 
 /* Login states */
 
-.webmaker-nav-container:not(.logged-in) .user {
+.wm-nav-container:not(.logged-in) .wm-nav-user {
   display: none;
 }
 
-.webmaker-nav-container.logged-in .wm-login-container {
+.wm-nav-container.logged-in .wm-nav-login-container {
   display: none;
 }
